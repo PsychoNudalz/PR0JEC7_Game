@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPath : MonoBehaviour
 {
-     public Transform[] points;
+    private Transform[] points;
 
     void Awake()
     {

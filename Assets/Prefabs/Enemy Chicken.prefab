@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65383515438416635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.58, y: 0, z: -2.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7378473519211012425}
@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b1ef0ddd724964b86d4a0009e7082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: Continue
+  action: 2
+  waitTime: 2
 --- !u!1 &130019899997240623
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,7 +70,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130019899997240623}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.62607515, y: 1.2450078e-17, z: -0.56070167}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8995807870757390179}
@@ -93,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2561c813308c8a409751a6fd6e00258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: []
 --- !u!1 &1189063117236938934
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189063117236938934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 4.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7378473519211012425}
@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b1ef0ddd724964b86d4a0009e7082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: Continue
+  action: 1
+  waitTime: 2
 --- !u!1 &1914648731222362966
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914648731222362966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.76, y: 0, z: -4.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7378473519211012425}
@@ -181,7 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b1ef0ddd724964b86d4a0009e7082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: Continue
+  action: 0
+  waitTime: 2
 --- !u!1 &3425287015033582705
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3425287015033582705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.72, y: 0, z: 4.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7378473519211012425}
@@ -225,7 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b1ef0ddd724964b86d4a0009e7082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: Continue
+  action: 1
+  waitTime: 2
 --- !u!1 &3577779512914002049
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,10 +400,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3577779512914435303}
-  - component: {fileID: 3577779512906724137}
+  - component: {fileID: 2050532035}
   m_Layer: 0
   m_Name: Enemy Chicken
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,25 +424,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3577779512906724137
-Animator:
-  serializedVersion: 3
+--- !u!136 &2050532035
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3577779512914002055}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: 01ad6942c5071ee4dbe84fa59bb44e44, type: 3}
-  m_Controller: {fileID: 9100000, guid: 84dd067921f4e0045bb3a9a6e8fb7789, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.20559588
+  m_Height: 0.48736823
+  m_Direction: 1
+  m_Center: {x: 0.001745835, y: 0.22119689, z: 0.014481157}
 --- !u!1 &3577779512914002057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1780709840395770890}
   - component: {fileID: 471824905}
-  - component: {fileID: 471824904}
+  - component: {fileID: 317650724}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -1083,7 +1081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5477175838521272795}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00017273426, y: 0.2256935, z: 0.007137239}
+  m_LocalPosition: {x: 0, y: 0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3577779512914435273}
@@ -1113,7 +1111,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &471824904
+--- !u!114 &317650724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1125,7 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc87400ecaec2b46b944a5922285a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  startSpeed: 2
   path: {fileID: 7378473519211012425}
 --- !u!1 &7757474765206338330
 GameObject:
@@ -1170,7 +1168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b1ef0ddd724964b86d4a0009e7082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: Continue
+  action: 0
+  waitTime: 2
 --- !u!1 &8841662320352833358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8841662320352833358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.39, y: 0, z: 2.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7378473519211012425}
@@ -1214,4 +1213,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b1ef0ddd724964b86d4a0009e7082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: Continue
+  action: 3
+  waitTime: 2
