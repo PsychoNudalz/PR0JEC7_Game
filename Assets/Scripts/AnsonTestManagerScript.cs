@@ -15,7 +15,7 @@ public class AnsonTestManagerScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            testDamagingPlayer();
+            testPlayerAttack();
         }
         if (Input.GetButtonDown("Fire2"))
         {
@@ -32,5 +32,9 @@ public class AnsonTestManagerScript : MonoBehaviour
     void testHealingPlayer()
     {
         FindObjectOfType<PlayerLifeSystemScript>().healHealth(10);
+    }
+    void testPlayerAttack()
+    {
+        FindObjectOfType<BoxCastDamageScript>().dealDamage();
     }
 }
