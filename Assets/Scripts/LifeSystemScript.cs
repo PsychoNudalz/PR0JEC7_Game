@@ -20,6 +20,7 @@ public class LifeSystemScript : MonoBehaviour
 
     [Header("Components")]
     public DamagePopScript damagePopScript;
+    public GroupParticleSystemScript groupParticleSystemScript;
 
     public int Health_Current { get => health_Current; }
     public int Health_Max { get => health_Max; }
@@ -45,6 +46,7 @@ public class LifeSystemScript : MonoBehaviour
             health_Current -= Mathf.RoundToInt(dmg);
             print(name + " take damage: " + dmg);
             displayDamage(dmg);
+            playDamageParticles();
         }
 
         checkDead();
@@ -79,7 +81,7 @@ public class LifeSystemScript : MonoBehaviour
         if (health_Current <= 0)
         {
             isDead = true;
-            if(deathGameObject != null)
+            if (deathGameObject != null)
             {
                 deathGameObject.transform.SetParent(null);
                 deathGameObject.SetActive(true);
@@ -89,7 +91,8 @@ public class LifeSystemScript : MonoBehaviour
             if (disableOnDeath)
             {
                 gameObject.SetActive(false);
-            } else if (destroyOnDeath)
+            }
+            else if (destroyOnDeath)
             {
                 Destroy(gameObject);
             }
@@ -99,6 +102,19 @@ public class LifeSystemScript : MonoBehaviour
 
     void displayDamage(float dmg)
     {
+        if (damagePopScript == null)
+        {
+            Debug.LogWarning(name + " missing damage numbers");
+            return;
+        }
         damagePopScript.displayDamage(dmg);
+    }
+    void playDamageParticles()
+    {
+        if (groupParticleSystemScript == null)
+        {
+            return;
+        }
+        groupParticleSystemScript.Play();
     }
 }
