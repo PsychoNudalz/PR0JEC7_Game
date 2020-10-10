@@ -21,6 +21,7 @@ public class AnsonTestManagerScript : MonoBehaviour
         {
             testHealingPlayer();
         }
+        //testOnCollisionDamage();
     }
 
     void testDamagingPlayer()
@@ -36,5 +37,10 @@ public class AnsonTestManagerScript : MonoBehaviour
     void testPlayerAttack()
     {
         FindObjectOfType<BoxCastDamageScript>().dealDamage();
+    }
+
+    void testOnCollisionDamage()
+    {
+        FindObjectOfType<OnCollisionDamageScript>().transform.position += new Vector3(1,0,0)* Mathf.Sin(Time.time);
     }
 }

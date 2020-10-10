@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// super class for handling dealing damage to life system
+/// </summary>
 public class DamageScript : MonoBehaviour
 {
     [Header("States")]
@@ -31,11 +35,20 @@ public class DamageScript : MonoBehaviour
             timeBetweenAttack_TimeNow -= Time.deltaTime;
         }
     }
-
+    /// <summary>
+    /// deals damage to a single target that has a LifeSystemScript
+    /// </summary>
+    /// <param name="ls"></param>
     public virtual void dealDamageToTarget(LifeSystemScript ls)
     {
         ls.takeDamage(Random.Range(damageRange.x, damageRange.y));
     }
+
+
+    /// <summary>
+    /// deals damage to all targets in the list attackedTargets
+    /// 
+    /// </summary>
     public virtual void dealDamage()
     {
         if (timeBetweenAttack_TimeNow > 0)
@@ -49,6 +62,16 @@ public class DamageScript : MonoBehaviour
         attackedTargets = new List<LifeSystemScript>();
 
         timeBetweenAttack_TimeNow = timeBetweenAttack;
+    }
+
+    protected void addAttackedTargets(GameObject collision)
+    {
+        LifeSystemScript ls;
+        ls = collision.GetComponentInParent<LifeSystemScript>();
+        if (!attackedTargets.Contains(ls))
+        {
+            attackedTargets.Add(ls);
+        }
     }
 
 

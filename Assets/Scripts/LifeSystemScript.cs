@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// base Life system super class
+/// base Life system super class, handles heealth, taking damage, healing
 /// </summary>
 
 public class LifeSystemScript : MonoBehaviour
@@ -80,13 +80,15 @@ public class LifeSystemScript : MonoBehaviour
     {
         if (health_Current <= 0)
         {
+            health_Current = 0;
             isDead = true;
             if (deathGameObject != null)
             {
-                deathGameObject.transform.SetParent(null);
-                deathGameObject.SetActive(true);
-
+                //deathGameObject.transform.SetParent(null);
+                //deathGameObject.SetActive(true);
+                Instantiate(deathGameObject, deathGameObject.transform.position, Quaternion.identity).SetActive(true);
             }
+
 
             if (disableOnDeath)
             {
