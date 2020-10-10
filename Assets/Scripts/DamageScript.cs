@@ -14,6 +14,10 @@ public class DamageScript : MonoBehaviour
     [Header("Target")]
     [SerializeField] protected LayerMask layerMask;
     [SerializeField] protected List<string> tagList;
+    [Header("Launch On Collision")]
+    public bool launchOnCollision = true;
+    [SerializeField] Vector3 launchDir;
+    public float launchForce = 200f;
     [Header("Debug")]
     [SerializeField] protected List<LifeSystemScript> attackedTargets = new List<LifeSystemScript>();
     [SerializeField] float timeBetweenAttack_TimeNow = 0;
@@ -71,6 +75,21 @@ public class DamageScript : MonoBehaviour
         if (!attackedTargets.Contains(ls))
         {
             attackedTargets.Add(ls);
+        }
+    }
+
+    protected void applyLaunch(GameObject collision)
+    {
+        if (launchOnCollision)
+        {
+            Rigidbody rb = collision.GetComponentInParent<Rigidbody>();
+            if (rb == null)
+            {
+                return;
+            }
+            launchDir = (collision.transform.position - transform.position).normalized;
+            rb.AddForce(launchDir * launchForce * rb.mass);
+            print("launching " + rb.name);
         }
     }
 

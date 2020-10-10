@@ -22,6 +22,7 @@ public class BoxCastDamageScript : DamageScript
             if (tagList.Contains(c.tag) && c.GetComponentInParent<LifeSystemScript>() != null)
             {
                 addAttackedTargets(c.gameObject);
+                applyLaunch(c.gameObject);
             }
             print(tagList.Contains(c.tag));
         }
