@@ -623,71 +623,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 549116879617135824, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 20c4f4c293b11d444a6c4825c354fc5f, type: 2}
-    - target: {fileID: 549116879618266640, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 6217dd83a11a7df46b82193c138a8ce2, type: 3}
-    - target: {fileID: 549116879619394064, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Name
-      value: Gem 4 (Purple)
-      objectReference: {fileID: 0}
-    - target: {fileID: 549116879810681478, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Name
-      value: Gem 3 (Blue)
-      objectReference: {fileID: 0}
-    - target: {fileID: 549116879812936774, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 774b5f2489125e644bd63c0724410e90, type: 2}
-    - target: {fileID: 549116879813904006, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
-    - target: {fileID: 549116879878345869, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
-    - target: {fileID: 549116880182838836, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 3be870bd3141f9741b70abdfb4242cb6, type: 3}
-    - target: {fileID: 549116880284390249, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Name
-      value: Gem 1 (Green)
-      objectReference: {fileID: 0}
-    - target: {fileID: 549116880286584233, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2ffed7c4d0b007744aff8e301b946986, type: 2}
-    - target: {fileID: 549116880368041704, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c357dffd38d0d4498958241b37d7c03, type: 2}
-    - target: {fileID: 549116880369007656, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 3be870bd3141f9741b70abdfb4242cb6, type: 3}
-    - target: {fileID: 549116880370229288, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Name
-      value: Gem 5 (Yellow)
-      objectReference: {fileID: 0}
     - target: {fileID: 549116880433080904, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -747,36 +682,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Collectible Gems
-      objectReference: {fileID: 0}
-    - target: {fileID: 549116880457701235, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 6217dd83a11a7df46b82193c138a8ce2, type: 3}
-    - target: {fileID: 549116880722419975, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
-    - target: {fileID: 549116880830217255, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
-    - target: {fileID: 549116880831348455, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0278916b69e41594fb64dd6e38ebc6da, type: 2}
-    - target: {fileID: 549116880833117191, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 549116880833339431, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c,
-        type: 3}
-      propertyPath: m_Name
-      value: Gem 2 (Red)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 656ca37b7cc279e49a4c3a2d46ef0e1c, type: 3}
