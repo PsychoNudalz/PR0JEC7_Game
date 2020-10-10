@@ -21,7 +21,7 @@ public class EnemyChickenMovementScript : MonoBehaviour
     {
         speed = startSpeed;
         isMoving = true;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         animator.SetTrigger(currentAction);
         pathPoints = path.GetComponent<EnemyPath>().GetPoints();
         target = pathPoints[1];
@@ -39,7 +39,7 @@ public class EnemyChickenMovementScript : MonoBehaviour
         }
 
         //if next point reached
-        if (Vector3.Distance(transform.position, target.position) <= 0.1f)
+        if (Vector3.Distance(transform.position, target.position) <= 0.5f)
         {
             //Check which action to perform and how long for before continuing.
             EnemyPathPoint targetScript = target.GetComponent<EnemyPathPoint>();

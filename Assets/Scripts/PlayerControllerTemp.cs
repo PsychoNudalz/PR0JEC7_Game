@@ -22,4 +22,13 @@ public class PlayerControllerTemp : MonoBehaviour
 
         rb.AddForce(movement * speed);
     }
+/*
+    private void OnTriggerEnter(Collider other){
+        
+        if(other.gameObject.CompareTag("Enemy")){
+            Debug.Log("Damage");
+            other.GetComponent<LifeSystemScript>().takeDamage(10);
+        }
+    }
+    */
 }
