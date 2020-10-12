@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GemColour {Green,Blue,Red,Purple,Yellow};
 public class GemCollection : MonoBehaviour
 {
     private int gemsCollected;
