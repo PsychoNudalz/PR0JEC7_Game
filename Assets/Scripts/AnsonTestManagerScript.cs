@@ -36,6 +36,7 @@ public class AnsonTestManagerScript : MonoBehaviour
     }
     void testPlayerAttack()
     {
+        FindObjectOfType<WeaponAttackAnimateScript>().swingWeapon();
         FindObjectOfType<BoxCastDamageScript>().dealDamage();
     }
 

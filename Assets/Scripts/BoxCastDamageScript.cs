@@ -12,8 +12,6 @@ public class BoxCastDamageScript : DamageScript
 
     public override void dealDamage()
     {
-        LifeSystemScript ls;
-
         attackedTargets = new List<LifeSystemScript>();
         RaycastHit[] hits = Physics.BoxCastAll(box.position, box.lossyScale / 2, box.forward, box.rotation, 0f, layerMask);
         foreach (RaycastHit h in hits)

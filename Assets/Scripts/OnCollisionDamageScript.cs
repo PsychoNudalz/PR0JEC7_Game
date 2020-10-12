@@ -25,7 +25,6 @@ public class OnCollisionDamageScript : DamageScript
             dealDamage();
             applyLaunch(collision.gameObject );
         }
-        print(onEnter && tagList.Contains(collision.gameObject.tag) && collision.gameObject.GetComponentInParent<LifeSystemScript>() != null);
     }
 
 
