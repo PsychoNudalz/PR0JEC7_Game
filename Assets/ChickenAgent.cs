@@ -1,44 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
+using System.Collections;
 
-public class EnemyChickenMovementScript : MonoBehaviour
+public class ChickenAgent : MonoBehaviour
 {
-    [Header("Walking speed (run is double this)")]
-    public float startSpeed = 2f;
-    [Header("Path gameobject containing waypoints")]
+    [SerializeField]
+    private float walkSpeed = 1f;
+    [SerializeField]
+    private float runSpeed = 2f;
     public Transform path;
-    private float speed;
+    private NavMeshAgent playerAgent;
     private string currentAction = "Walk";
     private Transform[] pathPoints;
     private Animator animator; 
     private bool isMoving;
     private Transform target;
     private int currentWaypoint;
-    
     // Start is called before the first frame update
     void Start()
     {
-        speed = startSpeed;
-        isMoving = true;
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         animator.SetTrigger(currentAction);
         pathPoints = path.GetComponent<EnemyPath>().GetPoints();
         target = pathPoints[1];
-        this.transform.position = pathPoints[0].position;
+        playerAgent = GetComponent<NavMeshAgent>();
+        playerAgent.destination = target.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if moving look at next waypoint and move toward it at set speed
-        this.transform.LookAt(target);
-        if(isMoving){
-            Vector3 direction = target.position - transform.position;
-            transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
-        }
+void Update(){
 
-        //if next point reached
+    //if next point reached
         if (Vector3.Distance(transform.position, target.position) <= 0.5f)
         {
             //Check which action to perform and how long for before continuing.
@@ -59,6 +50,10 @@ public class EnemyChickenMovementScript : MonoBehaviour
                     break;
             }
              GetNextWaypoint();
+             
+        }
+        if(isMoving){
+            playerAgent.destination = target.position;
         }
        
     }
@@ -80,7 +75,7 @@ public class EnemyChickenMovementScript : MonoBehaviour
     //Perform eat animation for so many seconds before continuing to next waypoint
     IEnumerator Eat(float waitTime) 
     {
-        speed = startSpeed;
+        playerAgent.speed = walkSpeed;
         isMoving = false;
         animator.ResetTrigger(currentAction);
         currentAction = "Eat";
@@ -95,7 +90,7 @@ public class EnemyChickenMovementScript : MonoBehaviour
     //Perform look animation for so many seconds before continuing to next waypoint
      IEnumerator Look(float waitTime) 
     {
-        speed = startSpeed;
+        playerAgent.speed = walkSpeed;
         isMoving = false;
         animator.ResetTrigger(currentAction);
         currentAction = "Turn Head";
@@ -110,7 +105,7 @@ public class EnemyChickenMovementScript : MonoBehaviour
     //Perform idle animation for so many seconds before continuing to next waypoint at run speed
     IEnumerator Run(float waitTime) 
     {
-        speed = startSpeed * 2;
+        playerAgent.speed = runSpeed;
         isMoving = false;
         animator.ResetTrigger(currentAction);
         yield return new WaitForSeconds(waitTime);
@@ -121,7 +116,7 @@ public class EnemyChickenMovementScript : MonoBehaviour
     //Perform idle animation for so many seconds before continuing to next waypoint
         IEnumerator Walk(float waitTime) 
     {
-        speed = startSpeed;
+        playerAgent.speed = walkSpeed;
         isMoving = false;
         animator.ResetTrigger(currentAction);
         yield return new WaitForSeconds(waitTime);
@@ -129,4 +124,5 @@ public class EnemyChickenMovementScript : MonoBehaviour
         animator.SetTrigger(currentAction);
         isMoving = true;
     }
+
 }
