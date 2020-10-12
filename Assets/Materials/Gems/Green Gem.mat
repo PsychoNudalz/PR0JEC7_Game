@@ -95,14 +95,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
-    - _BASE_COLOR_WEIGHT: 0.88
+    - _BASE_COLOR_WEIGHT: 1
     - _BUMP_MAP_STRENGTH: 3.1
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0
-    - _EMISSION_WEIGHT: 0.29
+    - _EMISSION_WEIGHT: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -113,21 +113,21 @@ Material:
     - _QueueOffset: 0
     - _REFLECTIONS_IOR: 1.52
     - _REFLECTIONS_ROUGHNESS: 1
-    - _REFLECTIONS_WEIGHT: 1.58
+    - _REFLECTIONS_WEIGHT: 1
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TRANSPARENCY: 0
+    - _TRANSPARENCY: 0.1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BASE_COLOR: {r: 0.013483422, g: 0.95283014, b: 0.13005203, a: 0}
+    - _BASE_COLOR: {r: 0, g: 1, b: 0, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EMISSION_COLOR: {r: 0, g: 1, b: 0.10751555, a: 1}
+    - _EMISSION_COLOR: {r: 0.011764707, g: 0.95294124, b: 0.12941177, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
+    - _REFLECTIONS_COLOR: {r: 0.011764707, g: 0.95294124, b: 0.12941177, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

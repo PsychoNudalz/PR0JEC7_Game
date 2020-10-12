@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GemColour {Green,Red,Blue,Purple,Yellow};
 public class GemCollection : MonoBehaviour
 {
-    private int gemsCollected;
+    private List<GemColour> coloursCollected;
     // Start is called before the first frame update
     void Start()
     {
-        gemsCollected = 0;
+        coloursCollected = new List<GemColour>();
     }
 
-    public void collectGem(){
-        gemsCollected ++;
+    public void CollectGem(GemColour colour){
+        coloursCollected.Add(colour);
     }
 
+    public bool CheckIfColourCollected(GemColour colour){
+        return coloursCollected.Contains(colour);
+    }
     public int GetGemsCollected(){
-        return gemsCollected;
+        return coloursCollected.Count;
     }
 }

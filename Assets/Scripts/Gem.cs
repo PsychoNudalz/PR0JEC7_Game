@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gem : MonoBehaviour
 {
-    public GemCollection gemCollection;
 
+    public GemColour colour;
+    public GemCollection gemCollection;
+    public Image image;
+    public Sprite sprite;
     public Vector3 rotationAngle;
     public float rotationSpeed;
 
@@ -39,10 +43,12 @@ public class Gem : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        Debug.Log("Collision");
-        if(other.gameObject.CompareTag("Player")){
-            gemCollection.collectGem();
+       
+        if(other.gameObject.CompareTag("Enemy")){
+            gemCollection.CollectGem(colour);
             this.gameObject.SetActive(false);
+            image.sprite = sprite;
         }
     }
+
 }
