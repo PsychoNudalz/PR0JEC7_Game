@@ -5,18 +5,21 @@ using UnityEngine.UI;
 
 public class Gem : MonoBehaviour
 {
-
-    public GemColour colour;
-    public GemCollection gemCollection;
-    public Image image;
-    public Sprite sprite;
-    public Vector3 rotationAngle;
-    public float rotationSpeed;
-
-    public float floatSpeed;
+    [SerializeField]
+    private GemColour colour;
+    [SerializeField]
+    private GemCollection gemCollection;
+    private Vector3 rotationAngle;
+    private float rotationSpeed = 20f;
+    private float floatSpeed = 0.003f;
     private bool goingUp = true;
-    public float floatRate;
+    private float floatRate = 0.3f;
     private float floatTimer;
+
+    private void Start()
+    {
+        rotationAngle = new Vector3(0, 0, 1);
+    }
 
     // Update is called once per frame
     void Update()
@@ -42,12 +45,12 @@ public class Gem : MonoBehaviour
             }
     }
 
+
     private void OnTriggerEnter(Collider other){
-       
+
         if(other.gameObject.CompareTag("Enemy")){
             gemCollection.CollectGem(colour);
-            this.gameObject.SetActive(false);
-            image.sprite = sprite;
+            gameObject.SetActive(false);
         }
     }
 

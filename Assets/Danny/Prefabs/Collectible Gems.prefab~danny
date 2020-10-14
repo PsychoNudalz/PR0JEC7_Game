@@ -29,7 +29,11 @@ MonoBehaviour:
   colour: 0
   gemCollection: {fileID: 549116880433080905}
   image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: 8a7b45b53eb18a848806b0111d973472, type: 3}
+  sprite: {fileID: 21300000, guid: 8a7b45b53eb18a848806b0111d973472, type: 3}
+  rotationAngle: {x: 0, y: 0, z: 1}
+  rotationSpeed: 50
+  floatSpeed: 0.001
+  floatRate: 0.5
 --- !u!64 &1216735181
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59,7 +63,11 @@ MonoBehaviour:
   colour: 4
   gemCollection: {fileID: 549116880433080905}
   image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: 5c8e5bc7b7cb34d4bb4ecf03368da8fb, type: 3}
+  sprite: {fileID: 21300000, guid: 5c8e5bc7b7cb34d4bb4ecf03368da8fb, type: 3}
+  rotationAngle: {x: 0, y: 0, z: 1}
+  rotationSpeed: 50
+  floatSpeed: 0.001
+  floatRate: 0.5
 --- !u!64 &829041080
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -89,7 +97,11 @@ MonoBehaviour:
   colour: 3
   gemCollection: {fileID: 549116880433080905}
   image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: 68b160c04e614bd46aea0bd3aba7640c, type: 3}
+  sprite: {fileID: 21300000, guid: 68b160c04e614bd46aea0bd3aba7640c, type: 3}
+  rotationAngle: {x: 0, y: 0, z: 1}
+  rotationSpeed: 50
+  floatSpeed: 0.001
+  floatRate: 0.5
 --- !u!1 &549116880433080911
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +179,11 @@ MonoBehaviour:
   colour: 1
   gemCollection: {fileID: 549116880433080905}
   image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: a83e240204c26ed48bf5f8c0be96b03d, type: 3}
+  sprite: {fileID: 21300000, guid: a83e240204c26ed48bf5f8c0be96b03d, type: 3}
+  rotationAngle: {x: 0, y: 0, z: 1}
+  rotationSpeed: 50
+  floatSpeed: 0.001
+  floatRate: 0.5
 --- !u!64 &132656104
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -197,7 +213,11 @@ MonoBehaviour:
   colour: 2
   gemCollection: {fileID: 549116880433080905}
   image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: b2d9ac4b89ddc4041b5bd74fba0f605f, type: 3}
+  sprite: {fileID: 21300000, guid: b2d9ac4b89ddc4041b5bd74fba0f605f, type: 3}
+  rotationAngle: {x: 0, y: 0, z: 1}
+  rotationSpeed: 50
+  floatSpeed: 0.001
+  floatRate: 0.5
 --- !u!1001 &549116880284292553
 PrefabInstance:
   m_ObjectHideFlags: 0
