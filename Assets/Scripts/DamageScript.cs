@@ -15,6 +15,7 @@ public class DamageScript : MonoBehaviour
     [SerializeField] protected LayerMask layerMask;
     [SerializeField] protected List<string> tagList;
     [Header("Launch On Collision")]
+    public Transform launchPoint;
     public bool launchOnCollision = true;
     [SerializeField] Vector3 launchDir;
     public float launchForce = 200f;
@@ -59,7 +60,7 @@ public class DamageScript : MonoBehaviour
         {
             return;
         }
-        foreach(LifeSystemScript ls in attackedTargets)
+        foreach (LifeSystemScript ls in attackedTargets)
         {
             dealDamageToTarget(ls);
         }
@@ -82,15 +83,36 @@ public class DamageScript : MonoBehaviour
     {
         if (launchOnCollision)
         {
-            Rigidbody rb = collision.GetComponentInParent<Rigidbody>();
-            if (rb == null)
+            if (launchPoint == null)
             {
-                return;
-            }
             launchDir = (collision.transform.position - transform.position).normalized;
-            rb.AddForce(launchDir * launchForce * rb.mass);
-            print("launching " + rb.name);
+
+            }
+            else
+            {
+                launchDir = (collision.transform.position - launchPoint.position).normalized;
+
+            }
+            Rigidbody rb = collision.GetComponentInParent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddForce(launchDir * launchForce * rb.mass);
+                //print("launching " + rb.name);
+            }
+
+            CharacterController cc = collision.GetComponentInParent<CharacterController>();
+            if (cc != null)
+            {
+                cc.Move(launchDir);
+                print("launching " + rb.name);
+
+            }
         }
+    }
+
+    public bool canDamage()
+    {
+        return timeBetweenAttack_TimeNow <= 0;
     }
 
 

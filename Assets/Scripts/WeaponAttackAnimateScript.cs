@@ -16,11 +16,14 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     public Vector3 startPos;
     public Vector3 endPos;
     public Vector3 originalPos;
+    public Quaternion originalRot;
     public bool swinging = false;
+    public int swingDir = -1;
 
     private void Awake()
     {
-        originalPos = transform.localPosition;
+        originalPos = weaponTransform.localPosition;
+        originalRot = weaponTransform.localRotation;
     }
 
     private void Update()
@@ -42,7 +45,7 @@ public class WeaponAttackAnimateScript : MonoBehaviour
         {
             Vector3 slerp = Vector3.Slerp(weaponTransform.localPosition, originalPos , swingSpeed * Time.deltaTime);
             weaponTransform.localPosition = slerp;
-            weaponTransform.up = transform.up;
+            weaponTransform.localRotation = originalRot;
         }
     }
 
@@ -65,12 +68,12 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     void pickPos()
     {
         float height = attackArea.transform.lossyScale.y/4f;
-        float width = attackArea.transform.lossyScale.x / 4f;
+        float width = attackArea.transform.lossyScale.x / 10f;
         float depth = attackArea.transform.lossyScale.z/2f ;
         float randomHeight = Random.Range(-height, height);
         //float randomHeight = height;
-
-        startPos = (new Vector3(width,randomHeight,-depth)+attackArea.localPosition);
-        endPos = (new Vector3(-width*2,-randomHeight,-depth) + attackArea.localPosition);
+        swingDir = -swingDir;
+        startPos = (new Vector3(swingDir* width,randomHeight,-depth)+attackArea.localPosition);
+        endPos = (new Vector3(swingDir * -width*2,-randomHeight,-depth) + attackArea.localPosition);
     }
 }
