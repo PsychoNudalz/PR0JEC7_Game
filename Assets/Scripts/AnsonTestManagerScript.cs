@@ -1,23 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AnsonTestManagerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Mouse mouse;
+    Keyboard keyboard;
+    private void Awake()
     {
-        
+        mouse = InputSystem.GetDevice<Mouse>();
+        keyboard = InputSystem.GetDevice<Keyboard>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (mouse.leftButton.isPressed)
         {
             testPlayerAttack();
         }
-        if (Input.GetButtonDown("Fire2"))
+        if (mouse.rightButton.isPressed)
         {
             testHealingPlayer();
         }
@@ -26,7 +29,7 @@ public class AnsonTestManagerScript : MonoBehaviour
 
     void testDamagingPlayer()
     {
-        FindObjectOfType<PlayerLifeSystemScript>().takeDamage(Random.Range(5,10));
+        FindObjectOfType<PlayerLifeSystemScript>().takeDamage(Random.Range(5, 10));
 
     }
 
@@ -36,12 +39,16 @@ public class AnsonTestManagerScript : MonoBehaviour
     }
     void testPlayerAttack()
     {
-        FindObjectOfType<WeaponAttackAnimateScript>().swingWeapon();
-        FindObjectOfType<BoxCastDamageScript>().dealDamage();
+        if (FindObjectOfType<BoxCastDamageScript>().canDamage())
+        {
+            FindObjectOfType<BoxCastDamageScript>().dealDamage();
+            FindObjectOfType<WeaponAttackAnimateScript>().swingWeapon();
+
+        }
     }
 
     void testOnCollisionDamage()
     {
-        FindObjectOfType<OnCollisionDamageScript>().transform.position += new Vector3(1,0,0)* Mathf.Sin(Time.time);
+        FindObjectOfType<OnCollisionDamageScript>().transform.position += new Vector3(1, 0, 0) * Mathf.Sin(Time.time);
     }
 }
