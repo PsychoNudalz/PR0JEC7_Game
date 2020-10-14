@@ -800,6 +800,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188242249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8261266377780796282, guid: 4f5a8b5abbe8f4a438d23316d087a4d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 436441825421071761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feff1e455ea471459dfd71f6d633410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &194910044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3349,7 +3361,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534103441}
-  m_LocalRotation: {x: -0.0018375095, y: 0.9938815, z: -0.109161936, w: -0.01672989}
+  m_LocalRotation: {x: -0.0018375058, y: 0.9938815, z: -0.109161936, w: -0.016729854}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4924,7 +4936,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 188242249}
+    - target: {fileID: 436441826727860308, guid: 4f5a8b5abbe8f4a438d23316d087a4d6,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
       objectReference: {fileID: 0}
+    - target: {fileID: 8261266377780796282, guid: 4f5a8b5abbe8f4a438d23316d087a4d6,
+        type: 3}
+      propertyPath: camera1
+      value: 
+      objectReference: {fileID: 1065965774}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f5a8b5abbe8f4a438d23316d087a4d6, type: 3}
 --- !u!1001 &2776132982712626024

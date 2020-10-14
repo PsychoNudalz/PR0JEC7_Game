@@ -73,15 +73,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132330353010437971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1adb8ead9cee3f04cbde735db030f4be, type: 3}
+  m_Script: {fileID: 11500000, guid: ed4e20a86015853469a6760c703c18d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   swingObject: {fileID: 2346459053441346586}
-  swingSpeed: 1
-  swingMaxAngle: 180
+  swingSpeed: 10
+  swingMaxAngle: 90
   offSetAngle: 0
   offSetStartAngle: 0
-  swingAngle: 180
+  swingAngle: 0
 --- !u!54 &2483392770472744010
 Rigidbody:
   m_ObjectHideFlags: 0
