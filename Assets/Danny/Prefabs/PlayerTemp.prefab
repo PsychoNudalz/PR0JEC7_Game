@@ -11681,6 +11681,7 @@ GameObject:
   - component: {fileID: 6204370675564464977}
   - component: {fileID: 6204370675564464983}
   - component: {fileID: 4356150682393343888}
+  - component: {fileID: 1710879639}
   m_Layer: 8
   m_Name: PlayerTemp
   m_TagString: Player
@@ -11873,6 +11874,35 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   camera1: {fileID: 0}
   animator: {fileID: 1002056849103177374}
+--- !u!114 &1710879639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204370675564464942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42af40ba1d4b6548aaabe32b795e8e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageRange: {x: 2, y: 2}
+  timeBetweenAttack: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  tagList:
+  - Enemy
+  launchPoint: {fileID: 0}
+  launchOnCollision: 1
+  launchDir: {x: 0, y: 0, z: 0}
+  launchForce: 50
+  attackedTargets: []
+  timeBetweenAttack_TimeNow: 0
+  onTrigger: 0
+  onEnter: 1
+  onStay: 0
+  onExit: 0
 --- !u!1 &6576062759100592872
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour
 
     private GameManager gameManager;
     private Vector3 rotationAngle;
-    private float rotationSpeed = 20f;
+    private float rotationSpeed = 40f;
     private float floatSpeed = 0.003f;
     private bool goingUp = true;
     private float floatRate = 0.3f;
@@ -42,6 +42,8 @@ public class Coin : MonoBehaviour
             floatSpeed = +floatSpeed;
         }
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
