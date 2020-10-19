@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum GemColour {Green,Red,Blue,Purple,Yellow};
+//public enum GemColour {Green,Red,Blue,Purple,Yellow};
 public class GemCollection : MonoBehaviour
 {
     [SerializeField]

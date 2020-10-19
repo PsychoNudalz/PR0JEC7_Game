@@ -7,8 +7,7 @@ public class Gem : MonoBehaviour
 {
     [SerializeField]
     private GemColour colour;
-    [SerializeField]
-    private GemCollection gemCollection;
+    private GameManager gameManager;
     private Vector3 rotationAngle;
     private float rotationSpeed = 20f;
     private float floatSpeed = 0.003f;
@@ -18,6 +17,7 @@ public class Gem : MonoBehaviour
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         rotationAngle = new Vector3(0, 0, 1);
     }
 
@@ -48,8 +48,8 @@ public class Gem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
 
-        if(other.gameObject.CompareTag("Enemy")){
-            gemCollection.CollectGem(colour);
+        if(other.gameObject.CompareTag("Player")){
+            gameManager.CollectGem(colour);
             gameObject.SetActive(false);
         }
     }
