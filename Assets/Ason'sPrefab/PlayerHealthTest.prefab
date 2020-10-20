@@ -4955,13 +4955,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436441826727860270}
+  - component: {fileID: 436441826727860307}
+  - component: {fileID: 436441826727860309}
+  - component: {fileID: 885117387416685297}
   - component: {fileID: 436441826727860308}
   - component: {fileID: 436441826727860271}
   - component: {fileID: 436441826727860305}
   - component: {fileID: 436441826727860306}
-  - component: {fileID: 436441826727860307}
-  - component: {fileID: 436441826727860309}
   - component: {fileID: 8261266377780796282}
+  - component: {fileID: 986878822418899254}
+  - component: {fileID: 5097478934098751027}
   m_Layer: 8
   m_Name: PlayerHealthTest
   m_TagString: Player
@@ -4988,6 +4991,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &436441826727860307
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436441826727860268}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 2
+--- !u!136 &436441826727860309
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436441826727860268}
+  m_Material: {fileID: 13400000, guid: aca010b8e3ce3f44599b0dfd432ce17b, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.3, z: 0}
+--- !u!114 &885117387416685297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436441826727860268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9164838b312def4792e562f1ffcd1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLifeSystem: {fileID: 436441826727860271}
+  playerController: {fileID: 8261266377780796282}
+  playerInteraction: {fileID: 986878822418899254}
+  playerAttack: {fileID: 5097478934098751027}
 --- !u!114 &436441826727860308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5020,7 +5069,7 @@ MonoBehaviour:
     m_ActionName: Camera/MouseCtrl[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8261266377780796282}
         m_MethodName: Move
         m_Mode: 0
         m_Arguments:
@@ -5033,6 +5082,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a6bded77-0d69-46b2-a732-68c7e96eba3f
     m_ActionName: PlayerMovement/WASD[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 30785144-a297-438f-b95b-9e68c438c1a9
+    m_ActionName: Anson'sTempControls/Attack
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -5107,36 +5160,6 @@ MonoBehaviour:
   originalRot: {x: 0, y: 0, z: 0, w: 0}
   swinging: 0
   swingDir: -1
---- !u!54 &436441826727860307
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 436441826727860268}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 2
---- !u!136 &436441826727860309
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 436441826727860268}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.3, z: 0}
 --- !u!114 &8261266377780796282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5149,11 +5172,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8feff1e455ea471459dfd71f6d633410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
-  moveSpeedMax: 50
-  turnSmoothTime: 0.1
+  moveSpeed: 10
+  moveSpeedMax: 10
+  turnSmoothTime: 0.05
   camera1: {fileID: 0}
   animator: {fileID: 6772519539652990364}
+--- !u!114 &986878822418899254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436441826727860268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adacf11dbabee1345b4d63d2fcb7fa51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFocus: {fileID: 0}
+--- !u!114 &5097478934098751027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436441826727860268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a4cc965d7cc8224a9f217c028921e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageScript: {fileID: 436441826727860305}
+  weaponAttackAnimate: {fileID: 436441826727860306}
+  box: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!1 &436441826937321490
 GameObject:
   m_ObjectHideFlags: 0
@@ -12004,12 +12056,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3ea201ae28186242b8cb48ee2c8889a, type: 3}
---- !u!4 &8503108203131516423 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8074837982391266574, guid: c3ea201ae28186242b8cb48ee2c8889a,
-    type: 3}
-  m_PrefabInstance: {fileID: 436441825551473417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4540861866523934567 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4110357404067619950, guid: c3ea201ae28186242b8cb48ee2c8889a,
@@ -12022,6 +12068,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf47905bc96bb4e46930274f925b69c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8503108203131516423 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8074837982391266574, guid: c3ea201ae28186242b8cb48ee2c8889a,
+    type: 3}
+  m_PrefabInstance: {fileID: 436441825551473417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7450514847136586395
 PrefabInstance:
   m_ObjectHideFlags: 0

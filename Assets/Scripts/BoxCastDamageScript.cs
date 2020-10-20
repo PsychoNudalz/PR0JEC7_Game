@@ -26,4 +26,5 @@ public class BoxCastDamageScript : DamageScript
         }
         base.dealDamage();
     }
+
 }

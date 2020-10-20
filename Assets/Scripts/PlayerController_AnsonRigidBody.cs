@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController_AnsonRigidBody : MonoBehaviour
 {
-    private Rigidbody rb;
     private Vector2 inputVector = new Vector2(0, 0);
     public float moveSpeed = 1f;
     public float moveSpeedMax = 10f;
@@ -14,6 +13,12 @@ public class PlayerController_AnsonRigidBody : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     Vector3 rotDir;
+
+
+
+
+    [Header("Component")]
+    private Rigidbody rb;
     public Camera camera1;
     public Animator animator;
 
@@ -37,10 +42,12 @@ public class PlayerController_AnsonRigidBody : MonoBehaviour
         if (moveDr.magnitude >= 0.1f)
         {
             RotateWithCamera();
-            rb.velocity += (rotDir.normalized * moveSpeed * Time.deltaTime);
+            rb.velocity = (rotDir.normalized * moveSpeed);
             if (rb.velocity.magnitude >= moveSpeedMax)
             {
+                float gravity = rb.velocity.y;
                 rb.velocity = rb.velocity.normalized * moveSpeedMax;
+                rb.velocity += new Vector3(0, gravity, 0);
             }
         }
         animator.SetFloat("Speed", rb.velocity.magnitude);
@@ -57,6 +64,15 @@ public class PlayerController_AnsonRigidBody : MonoBehaviour
 
         rotDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
+
+    }
+
+    public void RotateWithCamera_Force()
+    {
+        float targetAngle = Mathf.Atan2(moveDr.x, moveDr.z) * Mathf.Rad2Deg + camera1.transform.eulerAngles.y;
+        transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+        rotDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
     }
 }
