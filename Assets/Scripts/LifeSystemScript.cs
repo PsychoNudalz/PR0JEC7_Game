@@ -21,6 +21,7 @@ public class LifeSystemScript : MonoBehaviour
     [Header("Components")]
     public DamagePopScript damagePopScript;
     public GroupParticleSystemScript groupParticleSystemScript;
+    public HealthBarController healthBarController;
 
     public int Health_Current { get => health_Current; }
     public int Health_Max { get => health_Max; }
@@ -29,6 +30,7 @@ public class LifeSystemScript : MonoBehaviour
     private void Awake()
     {
         health_Current = health_Max;
+        healthBarController.SetMaxHealth(health_Max);
     }
 
     /// <summary>
@@ -45,6 +47,7 @@ public class LifeSystemScript : MonoBehaviour
         {
             health_Current -= Mathf.RoundToInt(dmg);
             print(name + " take damage: " + dmg);
+            healthBarController.SetHealth(health_Current);
             displayDamage(dmg);
             playDamageParticles();
         }
@@ -66,6 +69,7 @@ public class LifeSystemScript : MonoBehaviour
         {
             health_Current += Mathf.RoundToInt(amount);
             print(name + " heal damage: " + amount);
+            healthBarController.SetHealth(health_Current);
         }
         return health_Current;
     }
