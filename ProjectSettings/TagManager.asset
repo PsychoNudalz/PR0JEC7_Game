@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Gem
   - Trap
+  - Coin
+  - HealthPickup
   - Interactable
   layers:
   - Default

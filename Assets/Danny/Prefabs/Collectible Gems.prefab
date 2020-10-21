@@ -27,9 +27,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colour: 0
-  gemCollection: {fileID: 549116880433080905}
-  image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: 8a7b45b53eb18a848806b0111d973472, type: 3}
 --- !u!64 &1216735181
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57,9 +54,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colour: 4
-  gemCollection: {fileID: 549116880433080905}
-  image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: 5c8e5bc7b7cb34d4bb4ecf03368da8fb, type: 3}
 --- !u!64 &829041080
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -87,9 +81,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colour: 3
-  gemCollection: {fileID: 549116880433080905}
-  image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: 68b160c04e614bd46aea0bd3aba7640c, type: 3}
 --- !u!1 &549116880433080911
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +90,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 549116880433080904}
-  - component: {fileID: 549116880433080905}
   m_Layer: 0
   m_Name: Collectible Gems
   m_TagString: Untagged
@@ -126,18 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &549116880433080905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549116880433080911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce9ebf1e964538a4597186ec28af3693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &784117388
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -165,9 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colour: 1
-  gemCollection: {fileID: 549116880433080905}
-  image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: a83e240204c26ed48bf5f8c0be96b03d, type: 3}
 --- !u!64 &132656104
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -195,9 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colour: 2
-  gemCollection: {fileID: 549116880433080905}
-  image: {fileID: 0}
-  collectedSprite: {fileID: 21300000, guid: b2d9ac4b89ddc4041b5bd74fba0f605f, type: 3}
 --- !u!1001 &549116880284292553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -215,7 +187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aa56074584965524093e852b02a99de7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.95
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aa56074584965524093e852b02a99de7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -298,9 +270,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yellow Gem
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3be870bd3141f9741b70abdfb4242cb6, type: 3}
+      propertyPath: m_TagString
+      value: Gem
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3be870bd3141f9741b70abdfb4242cb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.87
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3be870bd3141f9741b70abdfb4242cb6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -308,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3be870bd3141f9741b70abdfb4242cb6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.18
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3be870bd3141f9741b70abdfb4242cb6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -383,9 +359,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Purple Gem
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6217dd83a11a7df46b82193c138a8ce2, type: 3}
+      propertyPath: m_TagString
+      value: Gem
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6217dd83a11a7df46b82193c138a8ce2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.57
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6217dd83a11a7df46b82193c138a8ce2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -393,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6217dd83a11a7df46b82193c138a8ce2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.77
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6217dd83a11a7df46b82193c138a8ce2, type: 3}
       propertyPath: m_LocalRotation.x
@@ -468,9 +448,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Gem
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
+      propertyPath: m_TagString
+      value: Gem
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.62
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -478,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -553,9 +537,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Gem
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
+      propertyPath: m_TagString
+      value: Gem
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.91
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
       propertyPath: m_LocalPosition.y
@@ -563,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.33
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
       propertyPath: m_LocalRotation.x

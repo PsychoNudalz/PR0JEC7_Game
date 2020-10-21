@@ -10,10 +10,10 @@ public class ChickenWaypoint : MonoBehaviour
 
     [Header("Time to perform idle animation")]
     [SerializeField]
-    private float idleTime;
+    private float idleTime = 1f;
     [Header("Idle action to perform at waypoint")]
     [SerializeField]
-    private IdleAction idleAction;
+    private IdleAction idleAction = IdleAction.Idle;
     [Header("Is chicken running to next waypoint?")]
     [SerializeField]
     private bool isRunning;
