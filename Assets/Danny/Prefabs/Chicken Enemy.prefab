@@ -689,7 +689,7 @@ Transform:
   m_GameObject: {fileID: 401312698625279493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.14, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 401312698786322863}
   - {fileID: 401312696830174610}
@@ -792,7 +792,7 @@ MonoBehaviour:
   tagList:
   - Player
   launchPoint: {fileID: 0}
-  launchOnCollision: 1
+  launchOnCollision: 0
   launchDir: {x: 0, y: 0, z: 0}
   launchForce: 100
   attackedTargets: []
@@ -822,6 +822,7 @@ MonoBehaviour:
   destroyOnDeath: 0
   damagePopScript: {fileID: 4361111598534442870}
   groupParticleSystemScript: {fileID: 400586913173948367}
+  healthBarController: {fileID: 0}
 --- !u!136 &401312698625279494
 CapsuleCollider:
   m_ObjectHideFlags: 0

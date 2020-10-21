@@ -13,9 +13,9 @@ public class CoinDistribution : MonoBehaviour
     private int numberOfCoins;
 
     private NavMeshHit myNavHit;
-    private float maxDist = 0.1f;
+    private float maxDist = 0.8f;
 
-    void Start()
+    void Awake()
     {
         for(int i = 0; i < numberOfCoins; i++)
         {
@@ -24,16 +24,20 @@ public class CoinDistribution : MonoBehaviour
             {
                 Vector3 position = new Vector3(Random.RandomRange(0 - levelSize, levelSize), 0.0f, Random.RandomRange(-levelSize, levelSize));
                 Collider[] collisions = Physics.OverlapSphere(position, 2f);
+                
                 validPosition = true;
+               
                 foreach(Collider collider in collisions)
                 {
+                    Debug.Log(collider);
                     if (collider.CompareTag("Coin"))
                     {
-                        Debug.Log("Coin Collision");
+                        
                         validPosition = false;
                         break;
                     }
                 }
+                
                 if (NavMesh.SamplePosition(position, out myNavHit, maxDist, 1 << NavMesh.GetAreaFromName("Walkable")) && validPosition)
                 {
                     GameObject coin = Instantiate(myPrefab, myNavHit.position, Quaternion.identity);

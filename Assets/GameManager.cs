@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject gemIconPanel;
+    
     [SerializeField]
     private Text coinCounterText;
 
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         coinsCollected = 0;
-        coinCounterText.text = coinsCollected.ToString();
+        coinCounterText.text = "0";
         coloursCollected = new List<GemColour>();
         icons = gemIconPanel.GetComponentsInChildren<Image>();
     }

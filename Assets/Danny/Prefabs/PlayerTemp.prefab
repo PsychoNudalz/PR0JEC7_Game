@@ -11778,6 +11778,7 @@ MonoBehaviour:
   destroyOnDeath: 0
   damagePopScript: {fileID: 8003096690102168677}
   groupParticleSystemScript: {fileID: 6204370675259970780}
+  healthBarController: {fileID: 0}
 --- !u!114 &6204370675564464979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11799,7 +11800,7 @@ MonoBehaviour:
   - Enemy
   - Trap
   launchPoint: {fileID: 0}
-  launchOnCollision: 1
+  launchOnCollision: 0
   launchDir: {x: 0, y: 0, z: 0}
   launchForce: 100
   attackedTargets: []
@@ -11821,12 +11822,8 @@ MonoBehaviour:
   weaponTransform: {fileID: 6204370675877962733}
   weaponAnimator: {fileID: 7892485125816679305}
   attackArea: {fileID: 6204370674041203651}
-  startPos: {x: 0, y: 0, z: 0}
-  endPos: {x: 0, y: 0, z: 0}
-  originalPos: {x: 0, y: 0, z: 0}
-  originalRot: {x: 0, y: 0, z: 0, w: 0}
+  ps_bladeSparkles: {fileID: 0}
   swinging: 0
-  swingDir: -1
 --- !u!54 &6204370675564464977
 Rigidbody:
   m_ObjectHideFlags: 0
