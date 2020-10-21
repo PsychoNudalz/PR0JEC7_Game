@@ -5,24 +5,27 @@ using UnityEngine;
 public class WeaponAttackAnimateScript : MonoBehaviour
 {
     [Header("States")]
-    public float swingSpeed= 2f;
+    public float swingSpeed = 2f;
 
     [Header("Components")]
     public Transform weaponTransform;
     public Animator weaponAnimator;
     public Transform attackArea;
+    public ParticleSystem ps_bladeSparkles;
 
     [Header("Debugging")]
-    public Vector3 startPos;
-    public Vector3 endPos;
-    public Vector3 originalPos;
-    public Quaternion originalRot;
+    private Vector3 startPos;
+    private Vector3 endPos;
+    private Vector3 originalPos;
+    private Quaternion originalRot;
     public bool swinging = false;
-    public int swingDir = -1;
+    private int swingDir = -1;
+    private float timeNow;
+    private bool bladeSparkles = true;
 
     private void Awake()
     {
-        originalPos = weaponTransform.localPosition;
+        originalPos = weaponTransform.position - transform.position;
         originalRot = weaponTransform.localRotation;
     }
 
@@ -30,22 +33,30 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     {
         if (swinging)
         {
-            if ((weaponTransform.localPosition-endPos).magnitude < .2f)
+            if ((weaponTransform.position - endPos).magnitude < .2f || timeNow> (1f))
             {
+                timeNow = 0;
                 print("Reached point");
                 swinging = false;
+                
             }
-
-            Vector3 slerp = Vector3.Slerp(weaponTransform.localPosition, endPos, swingSpeed * Time.deltaTime);
+            timeNow += Time.deltaTime;
+            Vector3 slerp = Vector3.Slerp(weaponTransform.position, endPos, swingSpeed * Time.deltaTime);
             //weaponTransform.up = -(slerp - weaponTransform.position).normalized;
-            weaponTransform.localPosition = slerp;
+            weaponTransform.position = slerp;
             //weaponTransform.up = transform.forward;
         }
         else
         {
-            Vector3 slerp = Vector3.Slerp(weaponTransform.localPosition, originalPos , swingSpeed * Time.deltaTime);
-            weaponTransform.localPosition = slerp;
+            Vector3 slerp = Vector3.Slerp(weaponTransform.position, transform.rotation * originalPos + transform.position, swingSpeed * Time.deltaTime);
+            weaponTransform.position = slerp;
             weaponTransform.localRotation = originalRot;
+            if (weaponAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle") && !bladeSparkles)
+            {
+                ps_bladeSparkles.Stop();
+                ps_bladeSparkles.Play();
+                bladeSparkles = true;
+            }
         }
     }
 
@@ -53,12 +64,13 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     {
         swinging = true;
         pickPos();
-        weaponTransform.localPosition = startPos;
+        weaponTransform.position = startPos;
         weaponAnimator.SetTrigger("Swing");
-        Vector3 dir = endPos-startPos;
 
-        weaponTransform.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg+90);
-
+        Vector3 dir = endPos - startPos;
+        //weaponTransform.right = attackArea.forward;
+        weaponTransform.rotation = Quaternion.Euler(0, attackArea.eulerAngles.y, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90+ attackArea.eulerAngles.y);
+        bladeSparkles = false;
 
         //weaponTransform.up = -(slerp - weaponTransform.position).normalized;
         //weaponTransform.forward = (endPos + transform.position - startPos + transform.position).normalized;
@@ -67,13 +79,19 @@ public class WeaponAttackAnimateScript : MonoBehaviour
 
     void pickPos()
     {
-        float height = attackArea.transform.lossyScale.y/4f;
-        float width = attackArea.transform.lossyScale.x / 10f;
-        float depth = attackArea.transform.lossyScale.z/2f ;
+        float height = attackArea.transform.lossyScale.y / 4f;
+        float width = attackArea.transform.lossyScale.x / 5f;
+        float depth = attackArea.transform.lossyScale.z / 2f;
         float randomHeight = Random.Range(-height, height);
         //float randomHeight = height;
         swingDir = -swingDir;
-        startPos = (new Vector3(swingDir* width,randomHeight,-depth)+attackArea.localPosition);
-        endPos = (new Vector3(swingDir * -width*2,-randomHeight,-depth) + attackArea.localPosition);
+        //Vector3 offset = (attackArea.position - transform.position);
+        Quaternion rotate = Quaternion.Euler(new Vector3(0, attackArea.eulerAngles.y, 0));
+        startPos = rotate * (new Vector3(swingDir * width, randomHeight, -depth)) + attackArea.position;
+        endPos = rotate * (new Vector3(swingDir * -width, -randomHeight, -depth)) + attackArea.position;
+        //startPos = offset + transform.position;
+        //endPos = offset + transform.position;
+
+        Debug.DrawRay(startPos, endPos-startPos,Color.red,1f);
     }
 }

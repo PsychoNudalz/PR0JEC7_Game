@@ -7,15 +7,25 @@ public class AnsonTestManagerScript : MonoBehaviour
 {
     Mouse mouse;
     Keyboard keyboard;
-    private void Awake()
+    bool useFlag = false;
+
+
+    private void Start()
     {
         mouse = InputSystem.GetDevice<Mouse>();
         keyboard = InputSystem.GetDevice<Keyboard>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        if (mouse == null)
+        {
+            mouse = InputSystem.GetDevice<Mouse>();
+
+        }
         if (mouse.leftButton.isPressed)
         {
             testPlayerAttack();
@@ -23,6 +33,14 @@ public class AnsonTestManagerScript : MonoBehaviour
         if (mouse.rightButton.isPressed)
         {
             testHealingPlayer();
+        }
+        if (keyboard.eKey.isPressed)
+        {
+            testUse();
+            useFlag = false;
+        } else if (!keyboard.eKey.isPressed && !useFlag)
+        {
+            useFlag = true;
         }
         //testOnCollisionDamage();
     }
@@ -39,16 +57,19 @@ public class AnsonTestManagerScript : MonoBehaviour
     }
     void testPlayerAttack()
     {
-        if (FindObjectOfType<BoxCastDamageScript>().canDamage())
-        {
-            FindObjectOfType<BoxCastDamageScript>().dealDamage();
-            FindObjectOfType<WeaponAttackAnimateScript>().swingWeapon();
-
-        }
+        FindObjectOfType<PlayerMasterHandlerScript>().Attack(); 
     }
 
     void testOnCollisionDamage()
     {
         FindObjectOfType<OnCollisionDamageScript>().transform.position += new Vector3(1, 0, 0) * Mathf.Sin(Time.time);
+    }
+
+    void testUse()
+    {
+        if (useFlag)
+        {
+            FindObjectOfType<PlayerInteractionScript>().useInteractable();
+        }
     }
 }

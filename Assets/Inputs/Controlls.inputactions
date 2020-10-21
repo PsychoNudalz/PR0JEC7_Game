@@ -98,6 +98,33 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Anson'sTempControls",
+            "id": "f0c99200-858d-4aa6-8160-3aa8ff8966eb",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "30785144-a297-438f-b95b-9e68c438c1a9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6a8767cb-ceae-46f5-a18e-8305642252b3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
