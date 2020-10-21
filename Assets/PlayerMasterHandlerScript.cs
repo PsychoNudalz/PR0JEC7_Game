@@ -6,13 +6,25 @@ using UnityEngine;
 /// </summary>
 public class PlayerMasterHandlerScript : MonoBehaviour
 {
-    [Header("Components")]
+    [Header("Player Components")]
     public PlayerLifeSystemScript playerLifeSystem;
     public PlayerController_AnsonRigidBody playerController;
     public PlayerInteractionScript playerInteraction;
     [Header("Attack")]
     public PlayerAttackScript playerAttack;
+    [Header("Outside Components")]
+    public HealthBarController healthBarController;
 
+
+    private void Awake()
+    {
+        if (healthBarController == null)
+        {
+            healthBarController = FindObjectOfType<HealthBarController>();
+
+        }
+        playerLifeSystem.healthBarController = healthBarController;
+    }
 
     public void Attack()
     {
