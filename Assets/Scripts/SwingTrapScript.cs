@@ -25,8 +25,8 @@ public class SwingTrapScript : MonoBehaviour
     void rotateSwingObject()
     {
         swingAngle = Mathf.Sin(Time.time * swingSpeed+asinAngle(offSetStartAngle)) * (swingMaxAngle / 2f);
-        print(swingAngle);
-        print("After: " + swingAngle);
+        //print(swingAngle);
+        //print("After: " + swingAngle);
         swingAngle +=offSetAngle;
         swingObject.transform.rotation = Quaternion.AngleAxis( swingAngle, transform.right)*initialRot*transform.rotation;
     }
