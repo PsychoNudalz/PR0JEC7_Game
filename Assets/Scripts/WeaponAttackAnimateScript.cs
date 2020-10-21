@@ -11,15 +11,17 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     public Transform weaponTransform;
     public Animator weaponAnimator;
     public Transform attackArea;
+    public ParticleSystem ps_bladeSparkles;
 
     [Header("Debugging")]
-    public Vector3 startPos;
-    public Vector3 endPos;
-    public Vector3 originalPos;
-    public Quaternion originalRot;
+    private Vector3 startPos;
+    private Vector3 endPos;
+    private Vector3 originalPos;
+    private Quaternion originalRot;
     public bool swinging = false;
-    public int swingDir = -1;
-    public float timeNow;
+    private int swingDir = -1;
+    private float timeNow;
+    private bool bladeSparkles = true;
 
     private void Awake()
     {
@@ -31,11 +33,12 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     {
         if (swinging)
         {
-            if ((weaponTransform.position - endPos).magnitude < .2f || timeNow> 1f)
+            if ((weaponTransform.position - endPos).magnitude < .2f || timeNow> (1f))
             {
                 timeNow = 0;
                 print("Reached point");
                 swinging = false;
+                
             }
             timeNow += Time.deltaTime;
             Vector3 slerp = Vector3.Slerp(weaponTransform.position, endPos, swingSpeed * Time.deltaTime);
@@ -45,9 +48,15 @@ public class WeaponAttackAnimateScript : MonoBehaviour
         }
         else
         {
-            Vector3 slerp = Vector3.Slerp(weaponTransform.position, originalPos + transform.position, swingSpeed * Time.deltaTime);
+            Vector3 slerp = Vector3.Slerp(weaponTransform.position, transform.rotation * originalPos + transform.position, swingSpeed * Time.deltaTime);
             weaponTransform.position = slerp;
             weaponTransform.localRotation = originalRot;
+            if (weaponAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle") && !bladeSparkles)
+            {
+                ps_bladeSparkles.Stop();
+                ps_bladeSparkles.Play();
+                bladeSparkles = true;
+            }
         }
     }
 
@@ -61,7 +70,7 @@ public class WeaponAttackAnimateScript : MonoBehaviour
         Vector3 dir = endPos - startPos;
         //weaponTransform.right = attackArea.forward;
         weaponTransform.rotation = Quaternion.Euler(0, attackArea.eulerAngles.y, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90+ attackArea.eulerAngles.y);
-
+        bladeSparkles = false;
 
         //weaponTransform.up = -(slerp - weaponTransform.position).normalized;
         //weaponTransform.forward = (endPos + transform.position - startPos + transform.position).normalized;

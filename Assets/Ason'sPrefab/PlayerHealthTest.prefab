@@ -5154,12 +5154,8 @@ MonoBehaviour:
   weaponTransform: {fileID: 436441826378658031}
   weaponAnimator: {fileID: 4437007299419646091}
   attackArea: {fileID: 436441825766668481}
-  startPos: {x: 0, y: 0, z: 0}
-  endPos: {x: 0, y: 0, z: 0}
-  originalPos: {x: 0, y: 0, z: 0}
-  originalRot: {x: 0, y: 0, z: 0, w: 0}
+  ps_bladeSparkles: {fileID: 8104946609817587482}
   swinging: 0
-  swingDir: -1
 --- !u!114 &8261266377780796282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5172,8 +5168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8feff1e455ea471459dfd71f6d633410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  moveSpeedMax: 10
+  moveSpeed: 7
+  moveSpeedMax: 7
   turnSmoothTime: 0.05
   camera1: {fileID: 0}
   animator: {fileID: 6772519539652990364}
@@ -5206,6 +5202,7 @@ MonoBehaviour:
   weaponAttackAnimate: {fileID: 436441826727860306}
   box: {fileID: 0}
   camera: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &436441826937321490
 GameObject:
   m_ObjectHideFlags: 0
@@ -12056,6 +12053,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3ea201ae28186242b8cb48ee2c8889a, type: 3}
+--- !u!4 &8503108203131516423 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8074837982391266574, guid: c3ea201ae28186242b8cb48ee2c8889a,
+    type: 3}
+  m_PrefabInstance: {fileID: 436441825551473417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4540861866523934567 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4110357404067619950, guid: c3ea201ae28186242b8cb48ee2c8889a,
@@ -12068,12 +12071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf47905bc96bb4e46930274f925b69c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &8503108203131516423 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8074837982391266574, guid: c3ea201ae28186242b8cb48ee2c8889a,
-    type: 3}
-  m_PrefabInstance: {fileID: 436441825551473417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7450514847136586395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12086,10 +12083,35 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.542
       objectReference: {fileID: 0}
+    - target: {fileID: 1666057227304605057, guid: 85b75a393f1b8dd459b358df51fe2c52,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666057227304605057, guid: 85b75a393f1b8dd459b358df51fe2c52,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666057227304605057, guid: 85b75a393f1b8dd459b358df51fe2c52,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666057227304605057, guid: 85b75a393f1b8dd459b358df51fe2c52,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3344165678637676645, guid: 85b75a393f1b8dd459b358df51fe2c52,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.542
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674897990552816341, guid: 85b75a393f1b8dd459b358df51fe2c52,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7019711316993878644, guid: 85b75a393f1b8dd459b358df51fe2c52,
         type: 3}
@@ -12158,6 +12180,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85b75a393f1b8dd459b358df51fe2c52, type: 3}
+--- !u!198 &8104946609817587482 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1666057227304605057, guid: 85b75a393f1b8dd459b358df51fe2c52,
+    type: 3}
+  m_PrefabInstance: {fileID: 7450514847136586395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &4437007299419646091 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6554674135935529488, guid: 85b75a393f1b8dd459b358df51fe2c52,
