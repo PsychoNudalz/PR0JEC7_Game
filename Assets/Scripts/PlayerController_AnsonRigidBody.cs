@@ -42,13 +42,13 @@ public class PlayerController_AnsonRigidBody : MonoBehaviour
         if (moveDr.magnitude >= 0.1f)
         {
             RotateWithCamera();
+            float gravity = rb.velocity.y;
             rb.velocity = (rotDir.normalized * moveSpeed);
             if (rb.velocity.magnitude >= moveSpeedMax)
             {
-                float gravity = rb.velocity.y;
                 rb.velocity = rb.velocity.normalized * moveSpeedMax;
-                rb.velocity += new Vector3(0, gravity, 0);
             }
+            rb.velocity += new Vector3(0, gravity, 0);
         }
         animator.SetFloat("Speed", rb.velocity.magnitude);
         animator.transform.position = transform.position;
