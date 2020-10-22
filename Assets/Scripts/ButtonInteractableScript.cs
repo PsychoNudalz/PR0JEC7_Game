@@ -19,11 +19,21 @@ public class ButtonInteractableScript : InteractableScript
     [Header("Timer")]
     public float timer = 0f; //will not deactivate if timer is 0;
     bool timerStart = false;
+    float timer_Now = 0;
+    Coroutine currentCoroutine;
 
     private void Start()
     {
         updateButtonAnimation(interactableActive);
 
+    }
+    private void FixedUpdate()
+    {
+        if (timer >0 && timer_Now < timer)
+        {
+            timer_Now += Time.deltaTime;
+            meshRenderer.material.SetFloat("_StepValue", timer_Now / timer);
+        }
     }
 
     //Tigger Zone handling
@@ -55,7 +65,7 @@ public class ButtonInteractableScript : InteractableScript
     //Button Behavoiur 
     public void useButton()
     {
-        print(name+" use");
+        print(name + " use");
         switch (buttonType)
         {
             case (ButtonType.TOGGLE):
@@ -67,7 +77,7 @@ public class ButtonInteractableScript : InteractableScript
             case (ButtonType.DEACTIVE):
                 setActivationForList(interactTargets, false);
                 break;
-            
+
         }
         updateButtonAnimation(interactableActive);
 
@@ -76,10 +86,18 @@ public class ButtonInteractableScript : InteractableScript
 
     public override void activate()
     {
-        activateBehaviour();   
-        if (timer >0f)
+        try
         {
-            StartCoroutine(autoDeactivate());
+            StopCoroutine(currentCoroutine);
+
+        } catch(System.Exception _)
+        {
+
+        }
+        activateBehaviour();
+        if (timer > 0f)
+        {
+            currentCoroutine = StartCoroutine(autoDeactivate());
         }
     }
 
@@ -131,6 +149,7 @@ public class ButtonInteractableScript : InteractableScript
     //Timer
     IEnumerator autoDeactivate()
     {
+        timer_Now = 0;
         yield return new WaitForSeconds(timer);
         activateBehaviour();
     }
