@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ChickenAgent : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class ChickenAgent : MonoBehaviour
     private float runSpeed = 2f;
     [Header("Chicken waypoints to follow")]
     public Transform waypointsToFollow;
+    [SerializeField]
+    private GameObject enemyHealthBar;
+    [SerializeField]
+    private Image healthBarImage;
+    private EnemyLifeSystemScript lifeSystem;
     private Transform[] waypoints;
     private NavMeshAgent playerAgent;
     private string currentAction = "Walk";
@@ -17,6 +23,7 @@ public class ChickenAgent : MonoBehaviour
     private bool isMoving;
     private Transform target;
     private int currentWaypoint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +38,10 @@ public class ChickenAgent : MonoBehaviour
         target = waypoints[0];
         playerAgent = GetComponent<NavMeshAgent>();
         playerAgent.destination = target.position;
+        lifeSystem = GetComponent<EnemyLifeSystemScript>();
     }
 
-    void Update() {
+    void FixedUpdate() {
 
         //if next point reached
         if (Vector3.Distance(transform.position, target.position) <= 0.5f)
@@ -47,7 +55,7 @@ public class ChickenAgent : MonoBehaviour
         if (isMoving) {
             playerAgent.destination = target.position;
         }
-
+        SetHealthBar();
     }
 
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
@@ -98,5 +106,12 @@ public class ChickenAgent : MonoBehaviour
             currentWaypoint++;
         }
         target = waypoints[currentWaypoint];
+    }
+
+    private void SetHealthBar()
+    {
+        float fillAmount = lifeSystem.Health_Current / lifeSystem.Health_Max;
+        Debug.Log(fillAmount);
+        healthBarImage.fillAmount = fillAmount;
     }
 }
