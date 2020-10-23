@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpinTrapScript : TrapScript
 {
 
-    public float spinTime = 1f;
+    public float spinTime = 1f; //time for object to do a full 360 spin
     Quaternion spinAngle;
 
 

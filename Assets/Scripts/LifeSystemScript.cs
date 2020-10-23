@@ -90,7 +90,7 @@ public class LifeSystemScript : MonoBehaviour
             {
                 //deathGameObject.transform.SetParent(null);
                 //deathGameObject.SetActive(true);
-                Instantiate(deathGameObject, deathGameObject.transform.position, Quaternion.identity).SetActive(true);
+                Instantiate(deathGameObject, transform.position, Quaternion.identity).SetActive(true);
             }
 
 
