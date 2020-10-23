@@ -29,7 +29,6 @@ public class CoinDistribution : MonoBehaviour
                
                 foreach(Collider collider in collisions)
                 {
-                    Debug.Log(collider);
                     if (collider.CompareTag("Coin"))
                     {
                         

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         coinsCollected = 0;
-        coinCounterText.text = "0";
+        //coinCounterText.text = "0";
         coloursCollected = new List<GemColour>();
         icons = gemIconPanel.GetComponentsInChildren<Image>();
     }

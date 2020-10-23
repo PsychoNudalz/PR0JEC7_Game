@@ -2,6 +2,7 @@
 using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.PlayerLoop;
 
 public class ChickenAgent : MonoBehaviour
 {
@@ -14,15 +15,17 @@ public class ChickenAgent : MonoBehaviour
     [SerializeField]
     private GameObject enemyHealthBar;
     [SerializeField]
+    private float chargePlayerDistance = 5f;
     private Image healthBarImage;
     private EnemyLifeSystemScript lifeSystem;
     private Transform[] waypoints;
-    private NavMeshAgent playerAgent;
+    private NavMeshAgent chickenAgent;
     private string currentAction = "Walk";
     private Animator animator;
-    private bool isMoving;
+    private bool isMoving = true;
     private Transform target;
     private int currentWaypoint;
+    private Camera camera;
 
 
     // Start is called before the first frame update
@@ -36,13 +39,25 @@ public class ChickenAgent : MonoBehaviour
                 waypoints[i] = waypointsToFollow.GetChild(i);
             }
         target = waypoints[0];
-        playerAgent = GetComponent<NavMeshAgent>();
-        playerAgent.destination = target.position;
+        chickenAgent = GetComponent<NavMeshAgent>();
+        chickenAgent.destination = target.position;
         lifeSystem = GetComponent<EnemyLifeSystemScript>();
+
+        foreach(Image child in enemyHealthBar.GetComponentsInChildren<Image>())
+        {
+            if (child.gameObject.name.Equals("EnemyHealthbarImage")){
+                healthBarImage = child;
+            }
+        }
+
+        SetHealthBar();
+        rotateTextToCamera();
     }
 
     void FixedUpdate() {
 
+        SetHealthBar();
+        rotateTextToCamera();
         //if next point reached
         if (Vector3.Distance(transform.position, target.position) <= 0.5f)
         {
@@ -53,15 +68,17 @@ public class ChickenAgent : MonoBehaviour
 
         }
         if (isMoving) {
-            playerAgent.destination = target.position;
+            chickenAgent.destination = target.position;
+            CheckChargePlayer();
         }
-        SetHealthBar();
+        
     }
+
 
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
     IEnumerator PerformWaypointAction(IdleAction idleAction, float waitTime, bool isRunning)
     {
-        playerAgent.speed = walkSpeed;
+        chickenAgent.speed = walkSpeed;
         isMoving = false;
         animator.ResetTrigger(currentAction);
         switch (idleAction)
@@ -83,12 +100,12 @@ public class ChickenAgent : MonoBehaviour
         if (isRunning)
         {
             currentAction = "Run";
-            playerAgent.speed = runSpeed;
+            chickenAgent.speed = runSpeed;
         }
         else
         {
             currentAction = "Walk";
-            playerAgent.speed = walkSpeed;
+            chickenAgent.speed = walkSpeed;
         }
         animator.SetTrigger(currentAction);
         isMoving = true;
@@ -110,8 +127,44 @@ public class ChickenAgent : MonoBehaviour
 
     private void SetHealthBar()
     {
-        float fillAmount = lifeSystem.Health_Current / lifeSystem.Health_Max;
-        Debug.Log(fillAmount);
+        float fillAmount = (float) lifeSystem.Health_Current / (float) lifeSystem.Health_Max;
         healthBarImage.fillAmount = fillAmount;
+    }
+
+    void rotateTextToCamera()
+    {
+        if (camera == null)
+        {
+            camera = FindObjectOfType<Camera>();
+        }
+
+
+        Vector3 dir = camera.transform.position - transform.position;
+        enemyHealthBar.transform.forward = -dir;
+    }
+
+    void CheckChargePlayer()
+    {
+        isMoving = false;
+        Collider[] collisions = Physics.OverlapSphere(transform.position, chargePlayerDistance);
+        if (collisions.Length > 0)
+        {
+            foreach (Collider collision in collisions)
+            {
+                if (collision.CompareTag("Player"))
+                {
+                    animator.ResetTrigger(currentAction);
+                    currentAction = "Run";
+                    chickenAgent.speed = runSpeed;
+                    chickenAgent.destination = collision.transform.position;
+                    animator.SetTrigger(currentAction);
+                }
+            }
+        }
+        else
+        {
+            chickenAgent.destination = target.position;
+        }
+        isMoving = true;
     }
 }
