@@ -10,57 +10,33 @@ public class ButtonInteractableScript : InteractableScript
         ACTIVE,
         DEACTIVE
     }
+    [Header("Boutton")]
     public ButtonType buttonType;
     public PlayerInteractionScript playerInteractionScript;
     public List<InteractableScript> interactTargets;
     public Animator animator;
     public MeshRenderer meshRenderer;
+    [Header("Timer")]
+    public float timer = 0f; //will not deactivate if timer is 0;
+    bool timerStart = false;
+    float timer_Now = 0;
+    Coroutine currentCoroutine;
 
     private void Start()
     {
         updateButtonAnimation(interactableActive);
 
     }
-
-    public void useButton()
+    private void FixedUpdate()
     {
-        print(name+" use");
-        switch (buttonType)
+        if (timer >0 && timer_Now < timer)
         {
-            case (ButtonType.TOGGLE):
-                toggleActivationForList(interactTargets);
-                break;
-            case (ButtonType.ACTIVE):
-                setActivationForList(interactTargets, true);
-                break;
-            case (ButtonType.DEACTIVE):
-                setActivationForList(interactTargets, false);
-                break;
-            
+            timer_Now += Time.deltaTime;
+            meshRenderer.material.SetFloat("_StepValue", timer_Now / timer);
         }
-        updateButtonAnimation(interactableActive);
-
-
     }
 
-    public override void activate()
-    {
-        switch (buttonType)
-        {
-            case (ButtonType.TOGGLE):
-                interactableActive = !interactableActive;
-                break;
-            case (ButtonType.ACTIVE):
-                interactableActive = true;
-                break;
-            case (ButtonType.DEACTIVE):
-                base.deactivate();
-                break;
-
-        }
-        useButton();
-    }
-
+    //Tigger Zone handling
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && getPlayerInteraction(other.gameObject))
@@ -86,6 +62,65 @@ public class ButtonInteractableScript : InteractableScript
         }
     }
 
+    //Button Behavoiur 
+    public void useButton()
+    {
+        print(name + " use");
+        switch (buttonType)
+        {
+            case (ButtonType.TOGGLE):
+                toggleActivationForList(interactTargets);
+                break;
+            case (ButtonType.ACTIVE):
+                setActivationForList(interactTargets, true);
+                break;
+            case (ButtonType.DEACTIVE):
+                setActivationForList(interactTargets, false);
+                break;
+
+        }
+        updateButtonAnimation(interactableActive);
+
+
+    }
+
+    public override void activate()
+    {
+        try
+        {
+            StopCoroutine(currentCoroutine);
+
+        } catch(System.Exception _)
+        {
+
+        }
+        activateBehaviour();
+        if (timer > 0f)
+        {
+            currentCoroutine = StartCoroutine(autoDeactivate());
+        }
+    }
+
+    void activateBehaviour()
+    {
+        switch (buttonType)
+        {
+            case (ButtonType.TOGGLE):
+                interactableActive = !interactableActive;
+                break;
+            case (ButtonType.ACTIVE):
+                interactableActive = true;
+                break;
+            case (ButtonType.DEACTIVE):
+                base.deactivate();
+                break;
+
+        }
+        useButton();
+    }
+
+
+    //Other
     bool getPlayerInteraction(GameObject other)
     {
         playerInteractionScript = other.GetComponent<PlayerInteractionScript>();
@@ -109,5 +144,13 @@ public class ButtonInteractableScript : InteractableScript
     {
         meshRenderer.material.SetFloat("_ActiveFrenel", b);
         print(meshRenderer.material.GetFloat("_ActiveFrenel"));
+    }
+
+    //Timer
+    IEnumerator autoDeactivate()
+    {
+        timer_Now = 0;
+        yield return new WaitForSeconds(timer);
+        activateBehaviour();
     }
 }

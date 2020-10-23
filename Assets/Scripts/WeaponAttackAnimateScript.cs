@@ -33,7 +33,7 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     {
         if (swinging)
         {
-            if ((weaponTransform.position - endPos).magnitude < .2f || timeNow> (1f))
+            if (timeNow> (1f)|| weaponAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"))
             {
                 timeNow = 0;
                 print("Reached point");
@@ -50,7 +50,6 @@ public class WeaponAttackAnimateScript : MonoBehaviour
         {
             Vector3 slerp = Vector3.Slerp(weaponTransform.position, transform.rotation * originalPos + transform.position, swingSpeed * Time.deltaTime);
             weaponTransform.position = slerp;
-            weaponTransform.localRotation = originalRot;
             if (weaponAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle") && !bladeSparkles)
             {
                 ps_bladeSparkles.Stop();
