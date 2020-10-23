@@ -22,7 +22,7 @@ public class Gem : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(rotationAngle * rotationSpeed * Time.deltaTime);
 
