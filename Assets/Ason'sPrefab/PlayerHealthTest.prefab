@@ -4960,11 +4960,11 @@ GameObject:
   - component: {fileID: 885117387416685297}
   - component: {fileID: 436441826727860308}
   - component: {fileID: 436441826727860271}
+  - component: {fileID: 5097478934098751027}
   - component: {fileID: 436441826727860305}
   - component: {fileID: 436441826727860306}
   - component: {fileID: 8261266377780796282}
   - component: {fileID: 986878822418899254}
-  - component: {fileID: 5097478934098751027}
   m_Layer: 8
   m_Name: PlayerHealthTest
   m_TagString: Player
@@ -5018,9 +5018,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.2
+  m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0, y: 1.3, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &885117387416685297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5037,6 +5037,7 @@ MonoBehaviour:
   playerController: {fileID: 8261266377780796282}
   playerInteraction: {fileID: 986878822418899254}
   playerAttack: {fileID: 5097478934098751027}
+  healthBarController: {fileID: 0}
 --- !u!114 &436441826727860308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5069,7 +5070,7 @@ MonoBehaviour:
     m_ActionName: Camera/MouseCtrl[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8261266377780796282}
+      - m_Target: {fileID: 885117387416685297}
         m_MethodName: Move
         m_Mode: 0
         m_Arguments:
@@ -5104,13 +5105,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health_Current: 0
-  health_Max: 50000
+  health_Max: 10
   isDead: 0
   deathGameObject: {fileID: 5706391910171912754}
   disableOnDeath: 1
   destroyOnDeath: 0
+  delayDeath: 0
   damagePopScript: {fileID: 4540861866523934567}
   groupParticleSystemScript: {fileID: 436441826964719582}
+  healthBarController: {fileID: 0}
+  animator: {fileID: 6772519539652990364}
+  deathTriggerName: Death
+--- !u!114 &5097478934098751027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436441826727860268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a4cc965d7cc8224a9f217c028921e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageScript: {fileID: 436441826727860305}
+  weaponAttackAnimate: {fileID: 436441826727860306}
+  box: {fileID: 0}
+  camera: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &436441826727860305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5186,23 +5208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFocus: {fileID: 0}
---- !u!114 &5097478934098751027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 436441826727860268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a4cc965d7cc8224a9f217c028921e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageScript: {fileID: 436441826727860305}
-  weaponAttackAnimate: {fileID: 436441826727860306}
-  box: {fileID: 0}
-  camera: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &436441826937321490
 GameObject:
   m_ObjectHideFlags: 0
@@ -5993,7 +5998,7 @@ Transform:
   m_GameObject: {fileID: 6676654658730447968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6674379353148361446}
   - {fileID: 6682855427496051342}

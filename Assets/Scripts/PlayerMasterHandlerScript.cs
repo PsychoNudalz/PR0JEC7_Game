@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 /// <summary>
 /// Main Player Handler, only get this component from outside of player
 /// </summary>
@@ -32,6 +33,15 @@ public class PlayerMasterHandlerScript : MonoBehaviour
         if (playerAttack.Attack())
         {
             //playerController.RotateWithCamera_Force();
+        }
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        if (!playerLifeSystem.IsDead)
+        {
+            playerController.Move(context);
+
         }
     }
 }
