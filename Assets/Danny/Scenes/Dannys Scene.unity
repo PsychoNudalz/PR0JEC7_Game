@@ -235,6 +235,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &468027023 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 401312698625279501, guid: f8e5ca96d51a90b44a2a1380299c56d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 401312698528753540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &498335153
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abbde4f0b7869046869f4c89289e5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followObject: {fileID: 1710879646}
+  followObject: {fileID: 468027023}
   offset: {x: 0, y: -6, z: 6}
 --- !u!224 &1312215055 stripped
 RectTransform:
@@ -714,12 +720,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1710879646 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6204370675564464940, guid: ae960aaa862ffc44b9a0d6dcb90eabe3,
-    type: 3}
-  m_PrefabInstance: {fileID: 7669205439988350113}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1715768948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -727,6 +727,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1636734282, guid: 09e6fd3c16bd7a04582535a7ed4c83c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.93
+      objectReference: {fileID: 0}
     - target: {fileID: 5467111333776117432, guid: 09e6fd3c16bd7a04582535a7ed4c83c0,
         type: 3}
       propertyPath: m_Name
@@ -1055,6 +1059,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 401312698625279489, guid: f8e5ca96d51a90b44a2a1380299c56d0,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 401312698625279491, guid: f8e5ca96d51a90b44a2a1380299c56d0,
         type: 3}
       propertyPath: waypointsToFollow
@@ -1068,7 +1077,7 @@ PrefabInstance:
     - target: {fileID: 401312698625279501, guid: f8e5ca96d51a90b44a2a1380299c56d0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.14
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 401312698625279501, guid: f8e5ca96d51a90b44a2a1380299c56d0,
         type: 3}
