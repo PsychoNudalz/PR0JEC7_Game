@@ -14,9 +14,7 @@ public class PlayerController: MonoBehaviour
     float turnSmoothVelocity;
     Vector3 rotDir;
     bool grounded;
-    public Ray jumpRay;
-    public RaycastHit hit;
-    public float jumpTriggerHeight;
+    public float jumpStrength;
 
 
     [Header("Component")]
@@ -43,7 +41,7 @@ public class PlayerController: MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && grounded) {
-            rb.AddForce(Vector3.up * 2000);
+            rb.AddForce(Vector3.up * (jumpStrength*1000));
             grounded = false;
         }
     }
