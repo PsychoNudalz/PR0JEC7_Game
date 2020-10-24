@@ -994,21 +994,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1521679577}
-    - target: {fileID: 3008158286475623716, guid: b59479171d0aaa64b89ac5f0d64fda61,
-        type: 3}
-      propertyPath: m_YAxisRecentering.m_enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3008158286475623716, guid: b59479171d0aaa64b89ac5f0d64fda61,
-        type: 3}
-      propertyPath: m_YAxis.m_MaxSpeed
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3008158286475623716, guid: b59479171d0aaa64b89ac5f0d64fda61,
-        type: 3}
-      propertyPath: m_XAxis.m_MaxSpeed
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 3008158286475623717, guid: b59479171d0aaa64b89ac5f0d64fda61,
         type: 3}
       propertyPath: m_LocalPosition.x
