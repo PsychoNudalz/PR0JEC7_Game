@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.PlayerLoop;
 
 public class PlayerController: MonoBehaviour
 {
@@ -15,6 +15,8 @@ public class PlayerController: MonoBehaviour
     Vector3 rotDir;
     bool grounded;
     public float jumpStrength;
+    
+    Collision floorCollision;
 
 
     [Header("Component")]
@@ -48,6 +50,8 @@ public class PlayerController: MonoBehaviour
 
     private void Update()
     {
+
+
         if (moveDr.magnitude >= 0.1f)
         {
             RotateWithCamera();
@@ -70,12 +74,24 @@ public class PlayerController: MonoBehaviour
     {
         if (collision.collider.CompareTag("Floor")) {
             grounded = true;
+          
         }
+        else if (!collision.collider.CompareTag("Floor") && rb.velocity.y == 0) {
+            grounded = true;
+         
+        }
+        
     }
 
     private void OnCollisionExit(Collision collision)
     {
             grounded = false;
+         if (collision.collider.CompareTag("Enviroment") && rb.velocity.y == 0)
+        {
+            grounded = true;
+          
+
+        }
     }
     
 
