@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
-public class PlayerController: MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Vector2 inputVector = new Vector2(0, 0);
     public float moveSpeed = 1f;
@@ -13,10 +13,9 @@ public class PlayerController: MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     Vector3 rotDir;
-    bool grounded;
+    [SerializeField] bool grounded;
     public float jumpStrength;
-    
-    Collision floorCollision;
+    [SerializeField]LayerMask layerMask;
 
 
     [Header("Component")]
@@ -42,6 +41,8 @@ public class PlayerController: MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        grounded = Physics.Raycast(transform.position, Vector3.down, 0.5f,layerMask);
+
         if (context.performed && grounded) {
             rb.AddForce(Vector3.up * (jumpStrength*1000));
             grounded = false;
@@ -69,14 +70,15 @@ public class PlayerController: MonoBehaviour
         
     }
 
+    // dont delete this its my pride and joy :^D
 
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Floor")) {
             grounded = true;
           
         }
-        else if (!collision.collider.CompareTag("Floor") && rb.velocity.y == 0) {
+        else if (!collision.collider.CompareTag("Floor") &&  rb.velocity.y <= 0.01 && rb.velocity.y >= -0.01) {
             grounded = true;
          
         }
@@ -86,14 +88,13 @@ public class PlayerController: MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
             grounded = false;
-         if (collision.collider.CompareTag("Enviroment") && rb.velocity.y == 0)
+
+         if (collision.collider.CompareTag("Enviroment") && rb.velocity.y <= 0.01 && rb.velocity.y >= -0.01)
         {
             grounded = true;
-          
-
         }
     }
-    
+    */
 
 
     private void RotateWithCamera()

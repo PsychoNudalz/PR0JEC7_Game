@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 543898947}
   - component: {fileID: 543898946}
   - component: {fileID: 543898945}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 6026734509933369922, guid: 4fea165d918e09749ab8409dbeef5ed6,
         type: 3}
       propertyPath: turnSmoothTime
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6026734509933369922, guid: 4fea165d918e09749ab8409dbeef5ed6,
         type: 3}
@@ -560,6 +560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moveSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026734509933369922, guid: 4fea165d918e09749ab8409dbeef5ed6,
+        type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 6027416322006919413, guid: 4fea165d918e09749ab8409dbeef5ed6,
         type: 3}
@@ -635,7 +640,7 @@ GameObject:
   - component: {fileID: 829563597}
   - component: {fileID: 829563596}
   - component: {fileID: 829563595}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube
   m_TagString: Enviroment
   m_Icon: {fileID: 0}
@@ -709,13 +714,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829563594}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 3.995, z: 6.459}
+  m_LocalRotation: {x: -0.32926476, y: -0, z: -0, w: 0.94423765}
+  m_LocalPosition: {x: 0.13, y: -1, z: 6.12}
   m_LocalScale: {x: 0.99999917, y: 9.076599, z: 8.316147}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -38.448, y: 0, z: 0}
 --- !u!4 &1521679577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6029489457995618025, guid: 4fea165d918e09749ab8409dbeef5ed6,
@@ -773,7 +778,11 @@ MonoBehaviour:
   moveSpeed: 5
   moveSpeedMax: 10
   turnSmoothTime: 0.5
+  grounded: 0
   jumpStrength: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   camera1: {fileID: 700246352}
   animator: {fileID: 1898079267}
 --- !u!114 &1898079264
