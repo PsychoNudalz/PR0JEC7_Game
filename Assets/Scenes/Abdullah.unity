@@ -541,6 +541,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6026734509933369922, guid: 4fea165d918e09749ab8409dbeef5ed6,
+        type: 3}
+      propertyPath: camera1
+      value: 
+      objectReference: {fileID: 700246352}
+    - target: {fileID: 6026734509933369922, guid: 4fea165d918e09749ab8409dbeef5ed6,
+        type: 3}
+      propertyPath: turnSmoothTime
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6027416322006919413, guid: 4fea165d918e09749ab8409dbeef5ed6,
         type: 3}
       propertyPath: m_Name
@@ -690,8 +700,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829563594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12549996, y: 0.64, z: 7.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.13, y: 2.12, z: 5.86}
+  m_LocalScale: {x: 0.99999917, y: 5.3274927, z: 9.514284}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -753,6 +763,7 @@ MonoBehaviour:
   moveSpeed: 5
   moveSpeedMax: 10
   turnSmoothTime: 0.5
+  jumpTriggerHeight: 0
   camera1: {fileID: 700246352}
   animator: {fileID: 1898079267}
 --- !u!114 &1898079264
@@ -1102,7 +1113,7 @@ PrefabInstance:
     - target: {fileID: 3008158288237711507, guid: b59479171d0aaa64b89ac5f0d64fda61,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.014666546
+      value: 0.014666545
       objectReference: {fileID: 0}
     - target: {fileID: 3008158288237711507, guid: b59479171d0aaa64b89ac5f0d64fda61,
         type: 3}
