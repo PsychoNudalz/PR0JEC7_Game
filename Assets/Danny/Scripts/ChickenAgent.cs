@@ -179,6 +179,10 @@ public class ChickenAgent : MonoBehaviour
                     chickenAgent.speed = runSpeed;
                     chickenAgent.destination = collision.transform.position;
                     animator.SetTrigger(currentAction);
+                    if (!chickenRunningSound.isPlaying)
+                    {
+                        chickenRunningSound.Play();
+                    }
                 }
             }
         }
