@@ -16,6 +16,12 @@ public class ChickenAgent : MonoBehaviour
     private GameObject enemyHealthBar;
     [SerializeField]
     private float chargePlayerDistance = 5f;
+    [SerializeField]
+    private AudioSource chickenSound;
+    [SerializeField]
+    private AudioSource chickenRunningSound;
+    [SerializeField]
+    private AudioSource chickenIdleSound;
     private Image healthBarImage;
     private EnemyLifeSystemScript lifeSystem;
     private Transform[] waypoints;
@@ -50,8 +56,8 @@ public class ChickenAgent : MonoBehaviour
             }
         }
 
-        SetHealthBar();
-        rotateTextToCamera();
+        if (!chickenSound.isPlaying)
+            chickenSound.Play();
     }
 
     void FixedUpdate() {
@@ -78,6 +84,11 @@ public class ChickenAgent : MonoBehaviour
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
     IEnumerator PerformWaypointAction(IdleAction idleAction, float waitTime, bool isRunning)
     {
+        if(waitTime > 0)
+        {
+            chickenSound.Stop();
+            chickenIdleSound.Play();
+        }
         chickenAgent.speed = walkSpeed;
         isMoving = false;
         animator.ResetTrigger(currentAction);
@@ -97,8 +108,13 @@ public class ChickenAgent : MonoBehaviour
         }
         yield return new WaitForSeconds(waitTime);
         animator.ResetTrigger(currentAction);
+        chickenIdleSound.Stop();
         if (isRunning)
         {
+            if (!chickenRunningSound.isPlaying)
+            {
+                chickenRunningSound.Play();
+            }
             currentAction = "Run";
             chickenAgent.speed = runSpeed;
         }
@@ -109,6 +125,11 @@ public class ChickenAgent : MonoBehaviour
         }
         animator.SetTrigger(currentAction);
         isMoving = true;
+        if (!chickenSound.isPlaying)
+        {
+            chickenSound.Play();
+        }
+        
     }
 
     //Get next waypoint and reset to first if last waypoint reached.

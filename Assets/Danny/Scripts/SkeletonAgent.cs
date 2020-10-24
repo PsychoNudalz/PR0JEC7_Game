@@ -26,6 +26,7 @@ public class SkeletonAgent : MonoBehaviour
     private Transform target;
     private int currentWaypoint;
     private Camera camera;
+    private AudioSource rattlingBones;
 
 
     // Start is called before the first frame update
@@ -53,6 +54,8 @@ public class SkeletonAgent : MonoBehaviour
 
         SetHealthBar();
         rotateTextToCamera();
+        rattlingBones = GetComponent<AudioSource>();
+        rattlingBones.Play();
     }
 
     void FixedUpdate() {
@@ -79,6 +82,10 @@ public class SkeletonAgent : MonoBehaviour
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
     IEnumerator PerformWaypointAction(float waitTime, bool isRunning)
     {
+        if(waitTime > 0)
+        {
+            rattlingBones.Stop();
+        }
         skeletonAgent.speed = walkSpeed;
         isMoving = false;
         animator.ResetTrigger(currentAction);
@@ -97,6 +104,10 @@ public class SkeletonAgent : MonoBehaviour
         }
         animator.SetTrigger(currentAction);
         isMoving = true;
+        if (!rattlingBones.isPlaying)
+        {
+            rattlingBones.Play();
+        }
     }
 
     //Get next waypoint and reset to first if last waypoint reached.
