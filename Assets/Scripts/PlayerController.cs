@@ -14,8 +14,9 @@ public class PlayerController: MonoBehaviour
     float turnSmoothVelocity;
     Vector3 rotDir;
     bool grounded;
-
-
+    public Ray jumpRay;
+    public RaycastHit hit;
+    public float jumpTriggerHeight;
 
 
     [Header("Component")]
@@ -29,21 +30,20 @@ public class PlayerController: MonoBehaviour
         rb = GetComponent<Rigidbody>();
         camera1 = FindObjectOfType<Camera>();
         grounded = true;
+        
     }
 
 
     public void Move(InputAction.CallbackContext context)
     {
-
         inputVector = context.ReadValue<Vector2>();
         moveDr = new Vector3(inputVector.x, 0, inputVector.y);
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && grounded)
-        {
-            rb.AddForce(Vector3.up*2000);
+        if (context.performed && grounded) {
+            rb.AddForce(Vector3.up * 2000);
             grounded = false;
         }
     }
@@ -64,20 +64,23 @@ public class PlayerController: MonoBehaviour
         animator.SetFloat("Speed", rb.velocity.magnitude);
         animator.transform.position = transform.position;
         animator.transform.rotation = transform.rotation;
-
+        
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
-         grounded = true; 
+        if (collision.collider.CompareTag("Floor")) {
+            grounded = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        grounded = false;
-        
+            grounded = false;
     }
+    
+
 
     private void RotateWithCamera()
     {
