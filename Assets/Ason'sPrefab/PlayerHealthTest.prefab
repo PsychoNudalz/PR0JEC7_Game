@@ -4965,6 +4965,7 @@ GameObject:
   - component: {fileID: 436441826727860306}
   - component: {fileID: 8261266377780796282}
   - component: {fileID: 986878822418899254}
+  - component: {fileID: 720566724}
   m_Layer: 8
   m_Name: PlayerHealthTest
   m_TagString: Player
@@ -5034,7 +5035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLifeSystem: {fileID: 436441826727860271}
-  playerController: {fileID: 8261266377780796282}
+  playerController: {fileID: 720566724}
   playerInteraction: {fileID: 986878822418899254}
   playerAttack: {fileID: 5097478934098751027}
   healthBarController: {fileID: 0}
@@ -5084,9 +5085,20 @@ MonoBehaviour:
     m_ActionId: a6bded77-0d69-46b2-a732-68c7e96eba3f
     m_ActionName: PlayerMovement/WASD[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 30785144-a297-438f-b95b-9e68c438c1a9
-    m_ActionName: Anson'sTempControls/Attack
+      m_Calls:
+      - m_Target: {fileID: 885117387416685297}
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d9d402eb-1bdb-4643-bc0d-f5079ac666d3
+    m_ActionName: PlayerMovement/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -5105,12 +5117,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health_Current: 0
-  health_Max: 10
+  health_Max: 100
   isDead: 0
   deathGameObject: {fileID: 5706391910171912754}
   disableOnDeath: 1
   destroyOnDeath: 0
-  delayDeath: 0
+  delayDeath: 2
   damagePopScript: {fileID: 4540861866523934567}
   groupParticleSystemScript: {fileID: 436441826964719582}
   healthBarController: {fileID: 0}
@@ -5185,7 +5197,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436441826727860268}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8feff1e455ea471459dfd71f6d633410, type: 3}
   m_Name: 
@@ -5208,6 +5220,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFocus: {fileID: 0}
+--- !u!114 &720566724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436441826727860268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b34a295a1c549408d0b351ba508df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  moveSpeedMax: 10
+  turnSmoothTime: 0.1
+  jumpTriggerHeight: 0
+  camera1: {fileID: 0}
+  animator: {fileID: 6772519539652990364}
 --- !u!1 &436441826937321490
 GameObject:
   m_ObjectHideFlags: 0
@@ -12107,6 +12137,21 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666057227304605057, guid: 85b75a393f1b8dd459b358df51fe2c52,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666057227304605057, guid: 85b75a393f1b8dd459b358df51fe2c52,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666057227304605057, guid: 85b75a393f1b8dd459b358df51fe2c52,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].repeatInterval
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3344165678637676645, guid: 85b75a393f1b8dd459b358df51fe2c52,
         type: 3}
