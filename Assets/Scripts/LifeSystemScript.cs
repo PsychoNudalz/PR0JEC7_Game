@@ -17,6 +17,7 @@ public class LifeSystemScript : MonoBehaviour
     public GameObject deathGameObject;
     public bool disableOnDeath = true;
     public bool destroyOnDeath;
+    public float delayDeath = 0;
 
     [Header("Components")]
     public DamagePopScript damagePopScript;
@@ -52,7 +53,7 @@ public class LifeSystemScript : MonoBehaviour
             playDamageParticles();
         }
 
-        checkDead();
+        CheckDead();
         return health_Current;
 
     }
@@ -80,28 +81,14 @@ public class LifeSystemScript : MonoBehaviour
     /// plays death event when health reaches 0
     /// </summary>
     /// <returns></returns>
-    public bool checkDead()
+    public virtual bool CheckDead()
     {
         if (health_Current <= 0)
         {
-            health_Current = 0;
             isDead = true;
-            if (deathGameObject != null)
-            {
-                //deathGameObject.transform.SetParent(null);
-                //deathGameObject.SetActive(true);
-                Instantiate(deathGameObject, transform.position, Quaternion.identity).SetActive(true);
-            }
+            health_Current = 0;
 
-
-            if (disableOnDeath)
-            {
-                gameObject.SetActive(false);
-            }
-            else if (destroyOnDeath)
-            {
-                Destroy(gameObject);
-            }
+            StartCoroutine(delayDeathRoutine());
         }
         return isDead;
     }
@@ -130,5 +117,29 @@ public class LifeSystemScript : MonoBehaviour
         {
             healthBarController.SetHealth(health_Current);
         }
+    }
+
+    public virtual void DeathBehaviour()
+    {
+        if (deathGameObject != null)
+        {
+            Instantiate(deathGameObject, transform.position, Quaternion.identity).SetActive(true);
+        }
+
+
+        if (disableOnDeath)
+        {
+            gameObject.SetActive(false);
+        }
+        else if (destroyOnDeath)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public virtual IEnumerator delayDeathRoutine()
+    {
+        yield return new WaitForSeconds(delayDeath);
+        DeathBehaviour();
     }
 }
