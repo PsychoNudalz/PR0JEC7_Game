@@ -39,6 +39,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "d9d402eb-1bdb-4643-bc0d-f5079ac666d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -96,31 +104,15 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "Anson'sTempControls",
-            "id": "f0c99200-858d-4aa6-8160-3aa8ff8966eb",
-            "actions": [
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "30785144-a297-438f-b95b-9e68c438c1a9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "6a8767cb-ceae-46f5-a18e-8305642252b3",
-                    "path": "",
+                    "id": "d1bdd396-d27b-4f65-bc9f-c9171c6c15d6",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
