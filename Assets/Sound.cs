@@ -2,9 +2,9 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Sound
+public class Sound: MonoBehaviour
 {
-    public string name;
+    public string SoundName;
 
     public AudioClip clip;
 
