@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         camera1 = FindObjectOfType<Camera>();
         grounded = true;
-        
+      
+
     }
 
 
@@ -44,9 +45,13 @@ public class PlayerController : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, 0.5f,layerMask);
 
         if (context.performed && grounded) {
+            animator.SetTrigger("Jump");
             rb.AddForce(Vector3.up * (jumpStrength*1000));
+            animator.SetBool("isFalling", true);
             grounded = false;
+            animator.SetBool("Grounded", false);
         }
+         
     }
 
     private void Update()
