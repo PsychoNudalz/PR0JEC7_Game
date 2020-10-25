@@ -69,6 +69,10 @@ public class DamageScript : MonoBehaviour
         timeBetweenAttack_TimeNow = timeBetweenAttack;
     }
 
+    /// <summary>
+    /// Add the collided gameobject to a list, so it won't deal damage multiple times
+    /// </summary>
+    /// <param name="collision"> gameobject that it did damage to </param>
     protected void addAttackedTargets(GameObject collision)
     {
         LifeSystemScript ls;

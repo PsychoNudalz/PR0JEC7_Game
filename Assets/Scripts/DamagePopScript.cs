@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
+/// <summary>
+/// class for displaying damage dealt on the target
+/// </summary>
 public class DamagePopScript : MonoBehaviour
 {
     public TextMeshPro text;
@@ -27,6 +31,12 @@ public class DamagePopScript : MonoBehaviour
         transform.forward = -dir;
     }
 
+
+    /// <summary>
+    /// display the damage dealt to the target
+    /// the total damage value stacks up until it disappears
+    /// </summary>
+    /// <param name="dmg"></param>
     public void displayDamage(float dmg)
     {
         if (!checkText())

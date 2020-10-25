@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// super class for handling all traps
+/// </summary>
 public abstract class TrapScript : MonoBehaviour
 {
     public bool trapActive = true;

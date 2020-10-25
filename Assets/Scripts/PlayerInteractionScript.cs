@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Allows the player to interact with Buttons
+/// </summary>
 [SerializeField]
 public class PlayerInteractionScript : MonoBehaviour
 {

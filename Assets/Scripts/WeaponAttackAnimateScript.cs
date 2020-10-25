@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// for animating the sword swinging
+/// </summary>
 public class WeaponAttackAnimateScript : MonoBehaviour
 {
     [Header("States")]
@@ -59,6 +62,9 @@ public class WeaponAttackAnimateScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// call to swing the weapon
+    /// </summary>
     public void swingWeapon()
     {
         swinging = true;
@@ -76,6 +82,9 @@ public class WeaponAttackAnimateScript : MonoBehaviour
         //weaponTransform.up = attackArea.forward;
     }
 
+    /// <summary>
+    /// pick a random start and end point of the sword swing according to the BoxCastDamageScript's area
+    /// </summary>
     void pickPos()
     {
         float height = attackArea.transform.lossyScale.y / 4f;

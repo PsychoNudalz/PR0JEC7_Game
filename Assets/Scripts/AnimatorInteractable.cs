@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 /// <summary>
+/// Extends Interactable Script
 /// Intereactive Object to activate an animator's animation
 /// good for doors or bridges
 /// </summary>
@@ -39,8 +40,19 @@ public class AnimatorInteractable : InteractableScript
         playAnimation();
     }
 
+    /// <summary>
+    /// set the boolean of the parameter in the animator
+    /// </summary>
     void playAnimation()
     {
         animator.SetBool(boolName, interactableActive);
+    }
+    /// <summary>
+    /// set the boolean of the parameter in the animator
+    /// </summary>
+    /// <param name="t">bool of the parameter in the animator</param>
+    void playAnimation(bool t)
+    {
+        animator.SetBool(boolName, t);
     }
 }

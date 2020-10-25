@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Extends Interactable Script
+/// for handling button behaviour 
+/// </summary>
 public class ButtonInteractableScript : InteractableScript
 {
     public enum ButtonType
@@ -62,8 +66,11 @@ public class ButtonInteractableScript : InteractableScript
         }
     }
 
-    //Button Behavoiur 
-    public void useButton()
+    //Button Behavoiur
+    /// <summary>
+    /// affecting the list of connected interactables
+    /// </summary>
+     void useButton()
     {
         print(name + " use");
         switch (buttonType)
@@ -84,6 +91,10 @@ public class ButtonInteractableScript : InteractableScript
 
     }
 
+    /// <summary>
+    /// called when activating the button
+    /// mainly for the player to called this method
+    /// </summary>
     public override void activate()
     {
         try
@@ -140,6 +151,10 @@ public class ButtonInteractableScript : InteractableScript
         }
     }
 
+    /// <summary>
+    /// set the material of the button's Frenel value
+    /// </summary>
+    /// <param name="b"></param>
     public void setMaterialFrenel(int b)
     {
         meshRenderer.material.SetFloat("_ActiveFrenel", b);
