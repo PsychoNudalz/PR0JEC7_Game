@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.PlayerLoop;
 
-
-public class PlayerController: MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Vector2 inputVector = new Vector2(0, 0);
     public float moveSpeed = 1f;
@@ -13,10 +13,9 @@ public class PlayerController: MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     Vector3 rotDir;
-    bool grounded;
-    public Ray jumpRay;
-    public RaycastHit hit;
-    public float jumpTriggerHeight;
+    [SerializeField] bool grounded;
+    public float jumpStrength;
+    [SerializeField]LayerMask layerMask;
 
 
     [Header("Component")]
@@ -30,7 +29,8 @@ public class PlayerController: MonoBehaviour
         rb = GetComponent<Rigidbody>();
         camera1 = FindObjectOfType<Camera>();
         grounded = true;
-        
+      
+
     }
 
 
@@ -42,14 +42,22 @@ public class PlayerController: MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        grounded = Physics.Raycast(transform.position, Vector3.down, 0.5f,layerMask);
+
         if (context.performed && grounded) {
-            rb.AddForce(Vector3.up * 2000);
+            animator.SetTrigger("Jump");
+            rb.AddForce(Vector3.up * (jumpStrength*1000));
+            animator.SetBool("isFalling", true);
             grounded = false;
+            animator.SetBool("Grounded", false);
         }
+         
     }
 
     private void Update()
     {
+
+
         if (moveDr.magnitude >= 0.1f)
         {
             RotateWithCamera();
@@ -67,19 +75,31 @@ public class PlayerController: MonoBehaviour
         
     }
 
+    // dont delete this its my pride and joy :^D
 
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Floor")) {
             grounded = true;
+          
         }
+        else if (!collision.collider.CompareTag("Floor") &&  rb.velocity.y <= 0.01 && rb.velocity.y >= -0.01) {
+            grounded = true;
+         
+        }
+        
     }
 
     private void OnCollisionExit(Collision collision)
     {
             grounded = false;
+
+         if (collision.collider.CompareTag("Enviroment") && rb.velocity.y <= 0.01 && rb.velocity.y >= -0.01)
+        {
+            grounded = true;
+        }
     }
-    
+    */
 
 
     private void RotateWithCamera()

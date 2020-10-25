@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Extends Life System Script
+/// for player
+/// </summary>
 public class PlayerLifeSystemScript : LifeSystemScript
 {
     [Header("Player Animator")]
@@ -10,9 +14,13 @@ public class PlayerLifeSystemScript : LifeSystemScript
 
     public override void DeathBehaviour()
     {
-        
         base.DeathBehaviour();
     }
+
+    /// <summary>
+    /// applies a delay so that that the animatorcan play the death animation, before disabling the player GameObject
+    /// </summary>
+    /// <returns></returns>
     public override IEnumerator delayDeathRoutine()
     {
         print(name + " death behaviour");

@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Extends damage script
+/// deal damage in an area specify by the dimension and position of the Box game object
+/// </summary>
 public class BoxCastDamageScript : DamageScript
 {
 
@@ -10,6 +13,9 @@ public class BoxCastDamageScript : DamageScript
     public Transform box;
 
 
+    /// <summary>
+    /// deal damage in an area specify by the dimension and position of the Box game object
+    /// </summary>
     public override void dealDamage()
     {
         attackedTargets = new List<LifeSystemScript>();

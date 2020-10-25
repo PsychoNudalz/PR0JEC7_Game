@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Extends Trap Script
+/// swings the trap from left to right according to the max angle
+/// swing speed follows a sin wave
+/// </summary>
 public class SwingTrapScript : TrapScript
 {
     public float swingSpeed = 10f;

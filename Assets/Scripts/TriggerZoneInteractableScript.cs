@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Extend Interactable Script
+/// controls connected Interactable scipts when the player enter the trigger zone
+/// </summary>
 public class TriggerZoneInteractableScript : InteractableScript
 {
     
@@ -76,27 +80,7 @@ public class TriggerZoneInteractableScript : InteractableScript
         updateZoneAnimation(interactableActive);
     }
 
-    //Button Behavoiur 
-    public void activateTrigger()
-    {
-        print(name + " use");
-        /*
-        switch (triggerType)
-        {
-            case (TriggerType.TOGGLE):
-                toggleActivationForList(interactTargets);
-                break;
-            case (TriggerType.ACTIVE):
-                setActivationForList(interactTargets, true);
-                break;
-            case (TriggerType.DEACTIVE):
-                setActivationForList(interactTargets, false);
-                break;
 
-        }
-        */
-
-    }
 
     void updateZoneAnimation(bool t)
     {

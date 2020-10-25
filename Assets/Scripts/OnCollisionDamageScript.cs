@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Extends Damage Script
+/// Deals damage on collisionm or on trigger
+/// requires collider
+/// </summary>
 public class OnCollisionDamageScript : DamageScript
 {
     [Header("Collision Behaviour")]
     public bool onTrigger;
     
 
-    public bool onEnter;
-    public bool onStay;
-    public bool onExit;
+    public bool onEnter = true;
+    //public bool onStay;
+    //public bool onExit;
     //public bool addToTargetsOnEnter = true;
     //public bool removeFromTargetsOnExit = true;
 

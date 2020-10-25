@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Super class for all interactable objects
+/// </summary>
 public abstract class InteractableScript : MonoBehaviour
 {
     public bool interactableActive = true;

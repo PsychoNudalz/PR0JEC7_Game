@@ -119,6 +119,10 @@ public class LifeSystemScript : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// how the game object behave when killed
+    /// </summary>
     public virtual void DeathBehaviour()
     {
         if (deathGameObject != null)
@@ -137,6 +141,10 @@ public class LifeSystemScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// delay death behaviour by a certain time
+    /// </summary>
+    /// <returns></returns>
     public virtual IEnumerator delayDeathRoutine()
     {
         yield return new WaitForSeconds(delayDeath);
