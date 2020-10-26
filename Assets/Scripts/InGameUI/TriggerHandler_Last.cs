@@ -6,7 +6,12 @@ public class TriggerHandler_Last : MonoBehaviour
 {
     public GameObject player;
 
-    void onTriggerEnter(Collider other) {
+    private void Awake()
+    {
+        player = FindObjectOfType<PlayerMasterHandlerScript>().gameObject;
+    }
+
+    void OnTriggerEnter(Collider other) {
         if (other.gameObject == player) {
             this.gameObject.SetActive(false);
         }

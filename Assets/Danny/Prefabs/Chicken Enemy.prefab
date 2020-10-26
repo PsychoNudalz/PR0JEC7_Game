@@ -988,7 +988,7 @@ MonoBehaviour:
   runSpeed: 2
   waypointsToFollow: {fileID: 0}
   enemyHealthBar: {fileID: 1477317451}
-  chargePlayerDistance: 5
+  chargePlayerDistance: 2
   chickenSound: {fileID: 442438972}
   chickenRunningSound: {fileID: 1196035082}
   chickenIdleSound: {fileID: 1196035083}
@@ -1057,8 +1057,6 @@ MonoBehaviour:
   timeBetweenAttack_TimeNow: 2
   onTrigger: 0
   onEnter: 1
-  onStay: 0
-  onExit: 0
 --- !u!114 &401312698625279495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,6 +1075,7 @@ MonoBehaviour:
   deathGameObject: {fileID: 7543220315117713057}
   disableOnDeath: 1
   destroyOnDeath: 0
+  delayDeath: 0
   damagePopScript: {fileID: 4361111598534442870}
   groupParticleSystemScript: {fileID: 400586913173948367}
   healthBarController: {fileID: 0}

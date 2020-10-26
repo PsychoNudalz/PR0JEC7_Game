@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 94442d01cda48a34f989c96e65a0f502,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -9037,14 +9037,6 @@ PrefabInstance:
       propertyPath: camera1
       value: 
       objectReference: {fileID: 1065965774}
-    - target: {fileID: 720566724, guid: 4f5a8b5abbe8f4a438d23316d087a4d6, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
-    - target: {fileID: 720566724, guid: 4f5a8b5abbe8f4a438d23316d087a4d6, type: 3}
-      propertyPath: jumpStrength
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 436441826727860268, guid: 4f5a8b5abbe8f4a438d23316d087a4d6,
         type: 3}
       propertyPath: m_Name
@@ -9104,16 +9096,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436441826727860307, guid: 4f5a8b5abbe8f4a438d23316d087a4d6,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436441826727860307, guid: 4f5a8b5abbe8f4a438d23316d087a4d6,
-        type: 3}
-      propertyPath: m_Mass
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8261266377780796282, guid: 4f5a8b5abbe8f4a438d23316d087a4d6,
         type: 3}
@@ -9396,7 +9378,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4436235015255483851}
-  m_LocalRotation: {x: 0.303427, y: -0.12426317, z: 0.039946932, w: 0.94387233}
+  m_LocalRotation: {x: 0.303427, y: -0.12426313, z: 0.039946914, w: 0.94387233}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9470,7 +9452,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4436235015373202662}
-  m_LocalRotation: {x: 0.33751288, y: -0.122730084, z: 0.044434424, w: 0.93222743}
+  m_LocalRotation: {x: 0.33751288, y: -0.12273005, z: 0.044434406, w: 0.93222743}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

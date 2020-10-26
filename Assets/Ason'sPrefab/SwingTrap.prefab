@@ -104,13 +104,11 @@ MonoBehaviour:
   launchPoint: {fileID: 1289014524}
   launchOnCollision: 1
   launchDir: {x: 0, y: 0, z: 0}
-  launchForce: 5000
+  launchForce: 100
   attackedTargets: []
   timeBetweenAttack_TimeNow: 0
   onTrigger: 1
   onEnter: 1
-  onStay: 0
-  onExit: 0
 --- !u!114 &4497399536488307112
 MonoBehaviour:
   m_ObjectHideFlags: 0

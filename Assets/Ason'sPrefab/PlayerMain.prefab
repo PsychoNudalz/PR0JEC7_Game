@@ -4880,8 +4880,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436441825766668510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 1.78}
-  m_LocalScale: {x: 4.2239013, y: 2.6366, z: 2.3815453}
+  m_LocalPosition: {x: 0, y: 1.1933, z: 1.2924}
+  m_LocalScale: {x: 2.4799929, y: 1.5711634, z: 1.4064411}
   m_Children: []
   m_Father: {fileID: 436441825433239651}
   m_RootOrder: 1
@@ -4967,7 +4967,7 @@ GameObject:
   - component: {fileID: 986878822418899254}
   - component: {fileID: 720566724}
   m_Layer: 8
-  m_Name: PlayerHealthTest
+  m_Name: PlayerMain
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5000,9 +5000,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436441826727860268}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 100
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -5232,10 +5232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b34a295a1c549408d0b351ba508df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  moveSpeedMax: 10
-  turnSmoothTime: 0.1
-  jumpTriggerHeight: 0
+  moveSpeed: 5
+  moveSpeedMax: 5
+  turnSmoothTime: 0.12
+  grounded: 0
+  jumpStrength: 30
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
   camera1: {fileID: 0}
   animator: {fileID: 6772519539652990364}
 --- !u!1 &436441826937321490
@@ -6028,7 +6032,7 @@ Transform:
   m_GameObject: {fileID: 6676654658730447968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 6674379353148361446}
   - {fileID: 6682855427496051342}

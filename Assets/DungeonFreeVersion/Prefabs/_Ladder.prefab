@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3207457711483682417}
   - component: {fileID: 6044091212009310452}
   - component: {fileID: 1545194494485777798}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: _Ladder
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,4 +93,4 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -4411361228764603502, guid: 452d29fa8289a0a49b11b96d25d5b548, type: 3}
+  m_Mesh: {fileID: -4411361228764603502, guid: 85f5f69b0b13bcb41b75342323ad7099, type: 3}

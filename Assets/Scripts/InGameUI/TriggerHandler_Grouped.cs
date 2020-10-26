@@ -7,7 +7,13 @@ public class TriggerHandler_Grouped : MonoBehaviour
     public GameObject player;
     public GameObject[] currentTutorialGroup, nextTutorialGroup;
 
-    void onTriggerEnter(Collider other) {
+
+    private void Awake()
+    {
+        player = FindObjectOfType<PlayerMasterHandlerScript>().gameObject;
+    }
+
+    void OnTriggerEnter(Collider other) {
         if (other.gameObject == player) {
             this.gameObject.SetActive(false);
             foreach (var item in currentTutorialGroup) {

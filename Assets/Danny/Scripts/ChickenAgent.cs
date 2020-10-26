@@ -38,16 +38,23 @@ public class ChickenAgent : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        lifeSystem = GetComponent<EnemyLifeSystemScript>();
+        chickenAgent = GetComponent<NavMeshAgent>();
         animator.SetTrigger(currentAction);
+        try
+        {
+
             waypoints = new Transform[waypointsToFollow.childCount];
             for (int i = 0; i < waypoints.Length; i++)
             {
                 waypoints[i] = waypointsToFollow.GetChild(i);
             }
         target = waypoints[0];
-        chickenAgent = GetComponent<NavMeshAgent>();
+        } catch (System.Exception e)
+        {
+
+        }
         chickenAgent.destination = target.position;
-        lifeSystem = GetComponent<EnemyLifeSystemScript>();
 
         foreach(Image child in enemyHealthBar.GetComponentsInChildren<Image>())
         {

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5860143863181681187}
   - component: {fileID: 729386084967554078}
   - component: {fileID: 1440626344578701197}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: _FloorRock
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

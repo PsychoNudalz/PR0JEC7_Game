@@ -115,7 +115,8 @@ public class LifeSystemScript : MonoBehaviour
     {
         if (healthBarController != null)
         {
-            healthBarController.SetHealth(health_Current);
+            healthBarController.SetMaxHealth(health_Max);
+            healthBarController.SetHealth((float)health_Current);
         }
     }
 
