@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, 0.5f,layerMask);
 
         if (context.performed && grounded) {
             animator.SetTrigger("Jump");
@@ -72,34 +71,37 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", rb.velocity.magnitude);
         animator.transform.position = transform.position;
         animator.transform.rotation = transform.rotation;
-        
+
+        //Anson: Added to update falling animation
+        grounded = Physics.Raycast(transform.position + Vector3.up, Vector3.down, 1.6f, layerMask);
+        animator.SetBool("Grounded", grounded);
     }
 
     // dont delete this its my pride and joy :^D
 
-   /* private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Floor")) {
-            grounded = true;
-          
-        }
-        else if (!collision.collider.CompareTag("Floor") &&  rb.velocity.y <= 0.01 && rb.velocity.y >= -0.01) {
-            grounded = true;
-         
-        }
-        
-    }
+    /* private void OnCollisionEnter(Collision collision)
+     {
+         if (collision.collider.CompareTag("Floor")) {
+             grounded = true;
 
-    private void OnCollisionExit(Collision collision)
-    {
-            grounded = false;
+         }
+         else if (!collision.collider.CompareTag("Floor") &&  rb.velocity.y <= 0.01 && rb.velocity.y >= -0.01) {
+             grounded = true;
 
-         if (collision.collider.CompareTag("Enviroment") && rb.velocity.y <= 0.01 && rb.velocity.y >= -0.01)
-        {
-            grounded = true;
-        }
-    }
-    */
+         }
+
+     }
+
+     private void OnCollisionExit(Collision collision)
+     {
+             grounded = false;
+
+          if (collision.collider.CompareTag("Enviroment") && rb.velocity.y <= 0.01 && rb.velocity.y >= -0.01)
+         {
+             grounded = true;
+         }
+     }
+     */
 
 
     private void RotateWithCamera()
