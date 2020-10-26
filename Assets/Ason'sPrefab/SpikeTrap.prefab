@@ -5731,14 +5731,14 @@ MonoBehaviour:
   tagList:
   - Player
   - Enemy
+  launchPoint: {fileID: 0}
   launchOnCollision: 1
   launchDir: {x: 0, y: 0, z: 0}
-  launchForce: 1000
+  launchForce: 500
   attackedTargets: []
   timeBetweenAttack_TimeNow: 0
+  onTrigger: 0
   onEnter: 1
-  onStay: 0
-  onExit: 0
 --- !u!135 &9042110329515727721
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5770,8 +5770,10 @@ MonoBehaviour:
   deathGameObject: {fileID: 0}
   disableOnDeath: 0
   destroyOnDeath: 1
+  delayDeath: 0
   damagePopScript: {fileID: 3956557128104894134}
   groupParticleSystemScript: {fileID: 1144600360194090511}
+  healthBarController: {fileID: 0}
 --- !u!65 &4551841297952514343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5783,7 +5785,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7762212434270128032
 GameObject:
