@@ -988,7 +988,7 @@ MonoBehaviour:
   runSpeed: 2
   waypointsToFollow: {fileID: 0}
   enemyHealthBar: {fileID: 1477317451}
-  chargePlayerDistance: 2
+  chargePlayerDistance: 7
   chickenSound: {fileID: 442438972}
   chickenRunningSound: {fileID: 1196035082}
   chickenIdleSound: {fileID: 1196035083}
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42af40ba1d4b6548aaabe32b795e8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRange: {x: 1, y: 1}
+  damageRange: {x: 1, y: 5}
   timeBetweenAttack: 0
   layerMask:
     serializedVersion: 2
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   launchDir: {x: 0, y: 0, z: 0}
   launchForce: 100
   attackedTargets: []
-  timeBetweenAttack_TimeNow: 2
+  timeBetweenAttack_TimeNow: 1
   onTrigger: 0
   onEnter: 1
 --- !u!114 &401312698625279495
@@ -1090,7 +1090,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
-  m_Height: 0.2
+  m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!82 &442438972
@@ -1105,7 +1105,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 827fa144afe899848b7cb97a3dfc06be, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1113,8 +1113,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 8
+  MinDistance: 0.5
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1164,7 +1164,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.25555557
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1201,7 +1201,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: de78bf173eb12c246b0e4bd5570c2b99, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1209,8 +1209,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 8
+  MinDistance: 0.5
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1260,7 +1260,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.25555557
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1297,7 +1297,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7f22e608c16001b4fbbc59b24dfd7dcb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1305,8 +1305,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 8
+  MinDistance: 0.5
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1356,7 +1356,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.25555557
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
