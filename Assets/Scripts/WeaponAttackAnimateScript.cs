@@ -23,7 +23,7 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     private Quaternion originalRot;
     public bool swinging = false;
     private int swingDir = -1;
-    private float timeNow;
+    [SerializeField] private float timeNow;
     private bool bladeSparkles = true;
 
     private void Awake()
@@ -32,32 +32,33 @@ public class WeaponAttackAnimateScript : MonoBehaviour
         originalRot = weaponTransform.localRotation;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (swinging)
         {
-            if (timeNow> (1f)|| weaponAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"))
+            if (timeNow > (3f) || weaponAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle"))
             {
                 timeNow = 0;
-                print("Reached point");
+                //print("Reached point");
                 swinging = false;
-                
+
             }
             timeNow += Time.deltaTime;
-            Vector3 slerp = Vector3.Slerp(weaponTransform.position, endPos, swingSpeed * Time.deltaTime);
+            weaponTransform.position = Vector3.Slerp(weaponTransform.position, endPos, swingSpeed * Time.deltaTime);
             //weaponTransform.up = -(slerp - weaponTransform.position).normalized;
-            weaponTransform.position = slerp;
             //weaponTransform.up = transform.forward;
         }
         else
         {
-            Vector3 slerp = Vector3.Slerp(weaponTransform.position, transform.rotation * originalPos + transform.position, swingSpeed * Time.deltaTime);
-            weaponTransform.position = slerp;
+            // Vector3 slerp = Vector3.Slerp(weaponTransform.position, transform.rotation * originalPos + transform.position, swingSpeed * Time.deltaTime);
+            //weaponTransform.position = slerp;
+            swinging = false;
             if (weaponAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Idle") && !bladeSparkles)
             {
                 ps_bladeSparkles.Stop();
                 ps_bladeSparkles.Play();
                 bladeSparkles = true;
+
             }
         }
     }
@@ -67,15 +68,21 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     /// </summary>
     public void swingWeapon()
     {
-        swinging = true;
-        pickPos();
-        weaponTransform.position = startPos;
-        weaponAnimator.SetTrigger("Swing");
+        if (!swinging)
+        {
 
-        Vector3 dir = endPos - startPos;
-        //weaponTransform.right = attackArea.forward;
-        weaponTransform.rotation = Quaternion.Euler(0, attackArea.eulerAngles.y, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90+ attackArea.eulerAngles.y);
-        bladeSparkles = false;
+            swinging = true;
+            pickPos();
+            weaponTransform.position = startPos;
+            weaponAnimator.SetTrigger("Swing");
+
+            Vector3 dir = endPos - startPos;
+            //weaponTransform.right = attackArea.forward;
+            weaponTransform.rotation = Quaternion.Euler(0, attackArea.eulerAngles.y, 0);
+            //weaponTransform.rotation = Quaternion.Euler(0, attackArea.eulerAngles.y, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+            weaponTransform.localRotation = Quaternion.Euler(weaponTransform.localRotation.eulerAngles.x, weaponTransform.localRotation.eulerAngles.y, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90);
+            bladeSparkles = false;
+        }
 
         //weaponTransform.up = -(slerp - weaponTransform.position).normalized;
         //weaponTransform.forward = (endPos + transform.position - startPos + transform.position).normalized;
@@ -89,7 +96,7 @@ public class WeaponAttackAnimateScript : MonoBehaviour
     {
         float height = attackArea.transform.lossyScale.y / 4f;
         float width = attackArea.transform.lossyScale.x / 5f;
-        float depth = attackArea.transform.lossyScale.z / 2f;
+        float depth = attackArea.transform.lossyScale.z / 4f;
         float randomHeight = Random.Range(-height, height);
         //float randomHeight = height;
         swingDir = -swingDir;
@@ -100,6 +107,6 @@ public class WeaponAttackAnimateScript : MonoBehaviour
         //startPos = offset + transform.position;
         //endPos = offset + transform.position;
 
-        Debug.DrawRay(startPos, endPos-startPos,Color.red,1f);
+        Debug.DrawRay(startPos, endPos - startPos, Color.red, 1f);
     }
 }
