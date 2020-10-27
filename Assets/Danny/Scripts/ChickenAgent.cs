@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.PlayerLoop;
+using System;
 
 public class ChickenAgent : MonoBehaviour
 {
@@ -22,10 +23,6 @@ public class ChickenAgent : MonoBehaviour
     private AudioSource chickenRunningSound;
     [SerializeField]
     private AudioSource chickenIdleSound;
-    private float spawnDelayTime = 0f;
-    [SerializeField]
-    private GameObject respawnPrefab;
-    Vector3 initialPosition;
     private Image healthBarImage;
     private EnemyLifeSystemScript lifeSystem;
     private Transform[] waypoints;
@@ -36,12 +33,12 @@ public class ChickenAgent : MonoBehaviour
     private Transform target;
     private int currentWaypoint;
     private Camera camera;
-    private Vector3 startPosition;
+    public Vector3 initialPosition;
 
 
     void Awake()
     {
-        StartCoroutine(DelaySpawn(spawnDelayTime));
+        
         initialPosition = transform.position;
         animator = GetComponentInChildren<Animator>();
         lifeSystem = GetComponent<EnemyLifeSystemScript>();
@@ -49,7 +46,6 @@ public class ChickenAgent : MonoBehaviour
         animator.SetTrigger(currentAction);
         try
         {
-
             waypoints = new Transform[waypointsToFollow.childCount];
             for (int i = 0; i < waypoints.Length; i++)
             {
@@ -62,15 +58,17 @@ public class ChickenAgent : MonoBehaviour
         }
         chickenAgent.destination = target.position;
 
-        foreach(Image child in enemyHealthBar.GetComponentsInChildren<Image>())
+        foreach (Image child in enemyHealthBar.GetComponentsInChildren<Image>())
         {
             if (child.gameObject.name.Equals("EnemyHealthbarImage")){
                 healthBarImage = child;
             }
         }
-
-        if (!chickenSound.isPlaying)
-            chickenSound.Play();
+        
+            if (!chickenSound.isPlaying)
+                chickenSound.Play();
+       
+        
     }
 
     void FixedUpdate() {
@@ -93,12 +91,6 @@ public class ChickenAgent : MonoBehaviour
         
     }
 
-    public IEnumerator DelaySpawn(float delayTime)
-    {
-        Debug.Log("Waiting to spawn....");
-        yield return new WaitForSeconds(spawnDelayTime);
-        this.gameObject.SetActive(true);
-    }
 
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
     IEnumerator PerformWaypointAction(IdleAction idleAction, float waitTime, bool isRunning)
@@ -167,6 +159,7 @@ public class ChickenAgent : MonoBehaviour
 
     private void SetHealthBar()
     {
+        
         float fillAmount = (float) lifeSystem.Health_Current / (float) lifeSystem.Health_Max;
         healthBarImage.fillAmount = fillAmount;
     }
@@ -212,5 +205,4 @@ public class ChickenAgent : MonoBehaviour
         isMoving = true;
     }
 
-    
 }

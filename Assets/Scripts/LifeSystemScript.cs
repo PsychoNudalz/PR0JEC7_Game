@@ -131,7 +131,6 @@ public class LifeSystemScript : MonoBehaviour
             Instantiate(deathGameObject, deathGameObject.transform.position, deathGameObject.transform.rotation).SetActive(true);
         }
 
-
         if (disableOnDeath)
         {
             gameObject.SetActive(false);

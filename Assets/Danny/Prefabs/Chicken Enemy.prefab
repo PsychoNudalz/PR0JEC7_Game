@@ -992,8 +992,7 @@ MonoBehaviour:
   chickenSound: {fileID: 442438972}
   chickenRunningSound: {fileID: 1196035082}
   chickenIdleSound: {fileID: 1196035083}
-  respawnDelayTime: 5
-  respawnPrefab: {fileID: 401312698625279493}
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!195 &401312698625279490
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1081,6 +1080,8 @@ MonoBehaviour:
   damagePopScript: {fileID: 4361111598534442870}
   groupParticleSystemScript: {fileID: 400586913173948367}
   healthBarController: {fileID: 0}
+  respawnPrefab: {fileID: 401312698625279493}
+  respawnDelay: 5
 --- !u!136 &401312698625279494
 CapsuleCollider:
   m_ObjectHideFlags: 0
