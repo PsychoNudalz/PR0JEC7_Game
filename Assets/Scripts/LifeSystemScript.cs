@@ -128,7 +128,7 @@ public class LifeSystemScript : MonoBehaviour
     {
         if (deathGameObject != null)
         {
-            Instantiate(deathGameObject, transform.position, Quaternion.identity).SetActive(true);
+            Instantiate(deathGameObject, deathGameObject.transform.position, deathGameObject.transform.rotation).SetActive(true);
         }
 
 

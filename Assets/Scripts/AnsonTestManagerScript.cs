@@ -60,7 +60,6 @@ public class AnsonTestManagerScript : MonoBehaviour
     }
     void testPlayerAttack()
     {
-        FindObjectOfType<PlayerMasterHandlerScript>().Attack(); 
     }
 
     void testOnCollisionDamage()

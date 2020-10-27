@@ -22,8 +22,7 @@ public class ButtonInteractableScript : InteractableScript
     public MeshRenderer meshRenderer;
     [Header("Timer")]
     public float timer = 0f; //will not deactivate if timer is 0;
-    bool timerStart = false;
-    float timer_Now = 0;
+    [SerializeField] float timer_Now = 0;
     Coroutine currentCoroutine;
 
     private void Start()
@@ -33,7 +32,7 @@ public class ButtonInteractableScript : InteractableScript
     }
     private void FixedUpdate()
     {
-        if (timer >0 && timer_Now < timer)
+        if (timer >0 && timer_Now < timer + 0.6f)
         {
             timer_Now += Time.deltaTime;
             meshRenderer.material.SetFloat("_StepValue", timer_Now / timer);
@@ -70,10 +69,10 @@ public class ButtonInteractableScript : InteractableScript
     /// <summary>
     /// affecting the list of connected interactables
     /// </summary>
-     void useButton()
+     void useButton(ButtonType b)
     {
         print(name + " use");
-        switch (buttonType)
+        switch (b)
         {
             case (ButtonType.TOGGLE):
                 toggleActivationForList(interactTargets);
@@ -97,6 +96,10 @@ public class ButtonInteractableScript : InteractableScript
     /// </summary>
     public override void activate()
     {
+        if (timer_Now < timer+0.5f)
+        {
+            return;
+        }
         try
         {
             StopCoroutine(currentCoroutine);
@@ -105,6 +108,7 @@ public class ButtonInteractableScript : InteractableScript
         {
 
         }
+
         activateBehaviour();
         if (timer > 0f)
         {
@@ -118,18 +122,43 @@ public class ButtonInteractableScript : InteractableScript
         {
             case (ButtonType.TOGGLE):
                 interactableActive = !interactableActive;
+                useButton(buttonType);
                 break;
             case (ButtonType.ACTIVE):
                 interactableActive = true;
+                useButton(buttonType);
                 break;
             case (ButtonType.DEACTIVE):
                 base.deactivate();
+                useButton(buttonType);
                 break;
 
         }
-        useButton();
+        
     }
 
+    void reverseBehaviour()
+    {
+        switch (buttonType)
+        {
+            case (ButtonType.TOGGLE):
+                interactableActive = !interactableActive;
+                useButton(ButtonType.TOGGLE);
+
+                break;
+            case (ButtonType.ACTIVE):
+                interactableActive = true;
+                useButton(ButtonType.DEACTIVE);
+
+                break;
+            case (ButtonType.DEACTIVE):
+                base.deactivate();
+                useButton(ButtonType.ACTIVE);
+
+                break;
+
+        }
+    }
 
     //Other
     bool getPlayerInteraction(GameObject other)
@@ -166,6 +195,6 @@ public class ButtonInteractableScript : InteractableScript
     {
         timer_Now = 0;
         yield return new WaitForSeconds(timer);
-        activateBehaviour();
+        reverseBehaviour();
     }
 }

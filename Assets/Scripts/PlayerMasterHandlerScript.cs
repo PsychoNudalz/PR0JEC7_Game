@@ -13,6 +13,8 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     public PlayerInteractionScript playerInteraction;
     [Header("Attack")]
     public PlayerAttackScript playerAttack;
+    [Header("Interact")]
+    public PlayerInteractionScript playerInteractionScript;
     [Header("Outside Components")]
     public HealthBarController healthBarController;
 
@@ -29,12 +31,14 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     /// <summary>
     /// Attacking the player and playing the animation
     /// </summary>
-    public void Attack()
+    public void Attack(InputAction.CallbackContext context)
     {
-
-        if (playerAttack.Attack())
+        if (context.performed)
         {
-            //playerController.RotateWithCamera_Force();
+            if (playerAttack.Attack())
+            {
+                //playerController.RotateWithCamera_Force();
+            }
         }
     }
     /// <summary>
@@ -73,5 +77,13 @@ public class PlayerMasterHandlerScript : MonoBehaviour
         }
         return 0f;
 
+    }
+
+    public void UseInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            playerInteractionScript.useInteractable();
+        }
     }
 }
