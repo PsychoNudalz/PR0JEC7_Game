@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health_Current: 0
-  health_Max: 5
+  health_Max: 10
   isDead: 0
   deathGameObject: {fileID: 7543220315117713057}
   disableOnDeath: 1
