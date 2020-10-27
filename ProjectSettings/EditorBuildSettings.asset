@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 159273ec4ee690745be87e5faf513345
   - enabled: 1
-    path: Assets/Scenes/Chen.unity
-    guid: 3e475efb489120e42878aa395ba23dc9
+    path: Assets/Scenes/Final Scenes/Tutorial.unity
+    guid: d864c0299891da045aab4dae982b2e92
+  - enabled: 1
+    path: Assets/Scenes/Final Scenes/Level2.unity
+    guid: bd2a1a210415f7c45931cc528db46831
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6bac6550322956f468496df607f9ae66,
       type: 2}
