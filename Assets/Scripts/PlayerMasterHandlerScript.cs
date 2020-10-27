@@ -15,6 +15,9 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     public PlayerAttackScript playerAttack;
     [Header("Interact")]
     public PlayerInteractionScript playerInteractionScript;
+    [Header("Sound")]
+    public SoundManager soundManager;
+    public PlayerSoundScript playerSoundScript;
     [Header("Outside Components")]
     public HealthBarController healthBarController;
 
@@ -27,6 +30,9 @@ public class PlayerMasterHandlerScript : MonoBehaviour
 
         }
         playerLifeSystem.healthBarController = healthBarController;
+        soundManager = FindObjectOfType<SoundManager>();
+        playerSoundScript = GetComponent<PlayerSoundScript>();
+        playerSoundScript.soundManager = soundManager;
     }
     /// <summary>
     /// Attacking the player and playing the animation
@@ -37,6 +43,7 @@ public class PlayerMasterHandlerScript : MonoBehaviour
         {
             if (playerAttack.Attack())
             {
+                playerSoundScript.playSound_attack();
                 //playerController.RotateWithCamera_Force();
             }
         }
@@ -49,8 +56,17 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     {
         if (!playerLifeSystem.IsDead)
         {
-            playerController.Move(context);
+            if (context.performed && playerController.Grounded)
+            {
+                playerController.Move(context);
+                playerSoundScript.playSound_walking();
 
+            }
+
+        }
+        if (context.ReadValue<Vector2>().magnitude < 0.1f || !playerController.Grounded)
+        {
+            playerSoundScript.playSound_walking(false);
         }
     }
     /// <summary>
@@ -61,7 +77,12 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     {
         if (!playerLifeSystem.IsDead)
         {
+            if (context.performed)
+            {
+
             playerController.Jump(context);
+            playerSoundScript.playSound_jump();
+            }
         }
     }
 

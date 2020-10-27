@@ -9,7 +9,7 @@ using UnityEngine;
 public class LifeSystemScript : MonoBehaviour
 {
     [Header("States")]
-    [SerializeField] int health_Current;
+    [SerializeField] protected int health_Current;
     [SerializeField] int health_Max = 10;
     [SerializeField] bool isDead = false;
 
@@ -111,7 +111,7 @@ public class LifeSystemScript : MonoBehaviour
         groupParticleSystemScript.Play();
     }
 
-    void updateHealthBar()
+    protected void updateHealthBar()
     {
         if (healthBarController != null)
         {

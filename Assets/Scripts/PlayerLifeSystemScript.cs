@@ -11,10 +11,30 @@ public class PlayerLifeSystemScript : LifeSystemScript
     [Header("Player Animator")]
     public Animator animator;
     public string deathTriggerName = "Death";
+    [Header("Sound")]
+    public PlayerSoundScript playerSoundScript;
+
+    private void Awake()
+    {
+        base.health_Current = base.Health_Max;
+        updateHealthBar();
+        playerSoundScript = GetComponent<PlayerSoundScript>();
+
+    }
 
     public override void DeathBehaviour()
     {
         base.DeathBehaviour();
+    }
+
+    public override int takeDamage(float dmg)
+    {
+        int i = base.takeDamage(dmg);
+        if (i > 0)
+        {
+            playerSoundScript.playSound_takeDamage();
+        }
+        return Health_Current;
     }
 
     /// <summary>
@@ -23,7 +43,7 @@ public class PlayerLifeSystemScript : LifeSystemScript
     /// <returns></returns>
     public override IEnumerator delayDeathRoutine()
     {
-        print(name + " death behaviour");
+        playerSoundScript.playSound_death();
         animator.SetBool(deathTriggerName, IsDead);
         print(animator.GetBool(deathTriggerName));
         yield return new WaitForSeconds(delayDeath);
