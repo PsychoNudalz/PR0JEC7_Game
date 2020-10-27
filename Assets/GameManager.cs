@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text coinCounterText;
 
-    private int coinsCollected;
+    public int coinsCollected;
     private Image[] icons;
     private List<GemColour> coloursCollected;
 

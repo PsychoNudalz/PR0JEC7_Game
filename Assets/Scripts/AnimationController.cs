@@ -9,7 +9,7 @@ public class AnimationController : MonoBehaviour
 {
     public GameObject settingsMenu, mainMenu;
     public void EnteringGameFinished() {
-        SceneManager.LoadScene("Chen");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LookingAtSettings() {
