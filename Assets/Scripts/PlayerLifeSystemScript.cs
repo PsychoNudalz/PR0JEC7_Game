@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerLifeSystemScript : LifeSystemScript
 {
+    [Header("Components+")]
+    private PlayerMasterHandlerScript playerMasterHandlerScript;
     [Header("Player Animator")]
     public Animator animator;
     public string deathTriggerName = "Death";
@@ -19,12 +21,14 @@ public class PlayerLifeSystemScript : LifeSystemScript
         base.health_Current = base.Health_Max;
         updateHealthBar();
         playerSoundScript = GetComponent<PlayerSoundScript>();
+        playerMasterHandlerScript = GetComponent<PlayerMasterHandlerScript>();
 
     }
 
     public override void DeathBehaviour()
     {
         base.DeathBehaviour();
+        playerMasterHandlerScript.GameOver();
     }
 
     public override int takeDamage(float dmg)

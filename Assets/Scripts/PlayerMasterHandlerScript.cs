@@ -20,6 +20,7 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     public PlayerSoundScript playerSoundScript;
     [Header("Outside Components")]
     public HealthBarController healthBarController;
+    public GameEndingController gameEndingController;
 
 
     private void Awake()
@@ -33,6 +34,7 @@ public class PlayerMasterHandlerScript : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         playerSoundScript = GetComponent<PlayerSoundScript>();
         playerSoundScript.soundManager = soundManager;
+        gameEndingController = FindObjectOfType<GameEndingController>();
     }
     /// <summary>
     /// Attacking the player and playing the animation
@@ -56,7 +58,7 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     {
         if (!playerLifeSystem.IsDead)
         {
-            if (context.performed && playerController.Grounded)
+            if (context.performed )
             {
                 playerController.Move(context);
                 playerSoundScript.playSound_walking();
@@ -104,7 +106,21 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     {
         if (context.performed)
         {
+            print("Interact pressed");
             playerInteractionScript.useInteractable();
+        }
+        else if (context.canceled)
+        {
+            playerInteraction.ResetFlag();
+        }
+    }
+
+    public void GameOver()
+    {
+        if (gameEndingController != null)
+        {
+
+        gameEndingController.TriggerOnDeath();
         }
     }
 }

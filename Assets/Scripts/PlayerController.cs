@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     Vector3 rotDir;
     [SerializeField] bool grounded;
     public float jumpStrength;
+    [Range(0f, 1.1f)]
+    public float jumpMovementMultiplier = 0.5f;
     [SerializeField]LayerMask layerMask;
 
 
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         inputVector = context.ReadValue<Vector2>();
+
         moveDr = new Vector3(inputVector.x, 0, inputVector.y);
     }
 
@@ -63,10 +66,15 @@ public class PlayerController : MonoBehaviour
         {
             RotateWithCamera();
             float gravity = rb.velocity.y;
-            rb.velocity = (rotDir.normalized * moveSpeed);
-            if (rb.velocity.magnitude >= moveSpeedMax)
+            float tempMultiplier = 1f;
+            if (!grounded)
             {
-                rb.velocity = rb.velocity.normalized * moveSpeedMax;
+                tempMultiplier = jumpMovementMultiplier;
+            }
+            rb.velocity = (rotDir.normalized * moveSpeed* tempMultiplier);
+            if (rb.velocity.magnitude >= moveSpeedMax * tempMultiplier)
+            {
+                rb.velocity = rb.velocity.normalized * moveSpeedMax * tempMultiplier;
             }
             rb.velocity += new Vector3(0, gravity, 0);
         }

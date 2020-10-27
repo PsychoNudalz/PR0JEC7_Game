@@ -9,16 +9,25 @@ public class PlayerInteractionScript : MonoBehaviour
 {
 
     public InteractableScript currentFocus;
+    public bool useFlage = false;
     // Start is called before the first frame update
     
 
     public void useInteractable()
     {
-        if (currentFocus != null)
+        if (currentFocus != null && !useFlage)
         {
             currentFocus.activate();
+            useFlage = true;
         }
     }
+
+    public void ResetFlag()
+    {
+        useFlage = false;
+    }
+
+
 
     public void setFocus(InteractableScript i)
     {
