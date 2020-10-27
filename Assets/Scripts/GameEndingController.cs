@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameEndingController : MonoBehaviour
@@ -20,6 +21,7 @@ public class GameEndingController : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.gameObject == player) {
             if (gameManager.allGemsCollected()) {
+                endingType.GetComponentInChildren<TMP_Text>().text = "Coins Collected: " + gameManager.coinsCollected;
                 endingType.SetActive(true);
             }
         }
