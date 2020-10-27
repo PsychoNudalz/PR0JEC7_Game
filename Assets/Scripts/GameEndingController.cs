@@ -17,6 +17,12 @@ public class GameEndingController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
+    public void TriggerOnDeath() {
+        endingType = FindObjectOfType<Defeated_Flag>().gameObject;
+        endingType.GetComponentInChildren<TMP_Text>().text = "Coins Collected: " + gameManager.coinsCollected;
+        endingType.SetActive(true);
+
+    }
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject == player) {
@@ -29,6 +35,10 @@ public class GameEndingController : MonoBehaviour
 
     public void NextLevelOnClick() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void RetryOnClick() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ReturnToMainOnClick() {
