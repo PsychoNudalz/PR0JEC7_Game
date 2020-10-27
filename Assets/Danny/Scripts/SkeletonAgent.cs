@@ -63,7 +63,7 @@ public class SkeletonAgent : MonoBehaviour
         SetHealthBar();
         rotateTextToCamera();
         //if next point reached
-        if (Vector3.Distance(transform.position, target.position) <= 0.5f)
+        if (Vector3.Distance(transform.position, target.position) <= 1f)
         {
             //Get waypoint script containing actions and perform idleAction
             SkeletonWaypoint targetScript = target.GetComponent<SkeletonWaypoint>();
