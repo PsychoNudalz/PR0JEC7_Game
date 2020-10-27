@@ -22,6 +22,10 @@ public class ChickenAgent : MonoBehaviour
     private AudioSource chickenRunningSound;
     [SerializeField]
     private AudioSource chickenIdleSound;
+    private float spawnDelayTime = 0f;
+    [SerializeField]
+    private GameObject respawnPrefab;
+    Vector3 initialPosition;
     private Image healthBarImage;
     private EnemyLifeSystemScript lifeSystem;
     private Transform[] waypoints;
@@ -32,11 +36,13 @@ public class ChickenAgent : MonoBehaviour
     private Transform target;
     private int currentWaypoint;
     private Camera camera;
+    private Vector3 startPosition;
 
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        StartCoroutine(DelaySpawn(spawnDelayTime));
+        initialPosition = transform.position;
         animator = GetComponentInChildren<Animator>();
         lifeSystem = GetComponent<EnemyLifeSystemScript>();
         chickenAgent = GetComponent<NavMeshAgent>();
@@ -87,6 +93,12 @@ public class ChickenAgent : MonoBehaviour
         
     }
 
+    public IEnumerator DelaySpawn(float delayTime)
+    {
+        Debug.Log("Waiting to spawn....");
+        yield return new WaitForSeconds(spawnDelayTime);
+        this.gameObject.SetActive(true);
+    }
 
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
     IEnumerator PerformWaypointAction(IdleAction idleAction, float waitTime, bool isRunning)
@@ -199,4 +211,6 @@ public class ChickenAgent : MonoBehaviour
         }
         isMoving = true;
     }
+
+    
 }
