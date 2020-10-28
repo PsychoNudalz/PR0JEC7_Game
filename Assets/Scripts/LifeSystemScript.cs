@@ -18,6 +18,7 @@ public class LifeSystemScript : MonoBehaviour
     public bool disableOnDeath = true;
     public bool destroyOnDeath;
     public float delayDeath = 0;
+    public bool detatchPopUps = true;
 
     [Header("Components")]
     public DamagePopScript damagePopScript;
@@ -134,12 +135,18 @@ public class LifeSystemScript : MonoBehaviour
 
         if (disableOnDeath)
         {
+            if (detatchPopUps)
+            {
+                StartCoroutine(reatach());
+            }
             gameObject.SetActive(false);
         }
         else if (destroyOnDeath)
         {
             Destroy(gameObject);
         }
+
+
     }
 
     /// <summary>
@@ -151,4 +158,13 @@ public class LifeSystemScript : MonoBehaviour
         yield return new WaitForSeconds(delayDeath);
         DeathBehaviour();
     }
+
+    public virtual IEnumerator reatach()
+    {
+        damagePopScript.transform.SetParent(null);
+        groupParticleSystemScript.transform.SetParent(null);
+        yield return new WaitForSeconds(3f);
+        damagePopScript.transform.SetParent(transform);
+        groupParticleSystemScript.transform.SetParent(transform);
+    } 
 }
