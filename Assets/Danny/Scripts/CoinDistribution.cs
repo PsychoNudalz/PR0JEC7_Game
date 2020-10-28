@@ -12,9 +12,9 @@ public class CoinDistribution : MonoBehaviour
     [SerializeField]
     private int numberOfCoins;
 
-    private NavMeshHit myNavHit;
-    private float maxDist = 0.8f;
-    private Vector3 initialPosition;
+    //private NavMeshHit myNavHit;
+    //private float maxDist = 0.8f;
+    //private Vector3 initialPosition;
     Vector3 positionToTry;
 
     private void Awake()
