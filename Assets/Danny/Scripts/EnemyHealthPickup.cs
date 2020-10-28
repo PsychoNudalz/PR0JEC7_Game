@@ -11,10 +11,13 @@ public class EnemyHealthPickup: MonoBehaviour
     private bool goingUp = true;
     private float floatRate = 0.3f;
     private float floatTimer;
+    [SerializeField]
+    private SoundManager soundManager;
 
     private void Start()
     {
         rotationAngle = new Vector3(0, 1, 0);
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -46,8 +49,10 @@ public class EnemyHealthPickup: MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
+            soundManager.Play("PickupSound");
             other.GetComponent<PlayerLifeSystemScript>().healHealth(healAmount);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            
         }
     }
 }

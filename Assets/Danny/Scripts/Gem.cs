@@ -14,10 +14,12 @@ public class Gem : MonoBehaviour
     private bool goingUp = true;
     private float floatRate = 0.3f;
     private float floatTimer;
+    private SoundManager soundManager;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        soundManager = FindObjectOfType<SoundManager>();
         rotationAngle = new Vector3(0, 0, 1);
     }
 
@@ -49,8 +51,9 @@ public class Gem : MonoBehaviour
     private void OnTriggerEnter(Collider other){
 
         if(other.gameObject.CompareTag("Player")){
+            soundManager.Play("PickupSound");
             gameManager.CollectGem(colour);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 

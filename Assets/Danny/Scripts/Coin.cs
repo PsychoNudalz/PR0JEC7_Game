@@ -12,10 +12,12 @@ public class Coin : MonoBehaviour
     private bool goingUp = true;
     private float floatRate = 0.3f;
     private float floatTimer;
+    private SoundManager soundManager;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        soundManager = FindObjectOfType<SoundManager>();
         rotationAngle = new Vector3(1, 0, 0);
     }
 
@@ -50,8 +52,9 @@ public class Coin : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
+            soundManager.Play("PickupSound");
             gameManager.CollectCoin(); ;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
