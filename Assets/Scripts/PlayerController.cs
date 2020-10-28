@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     Vector3 rotDir;
     [SerializeField] bool grounded;
     public float jumpStrength;
+    [Range(0f, 1.1f)]
+    public float jumpMovementMultiplier = 0.5f;
     [SerializeField]LayerMask layerMask;
 
 
@@ -23,12 +25,14 @@ public class PlayerController : MonoBehaviour
     public Camera camera1;
     public Animator animator;
 
+    public bool Grounded { get => grounded; set => grounded = value; }
+
     private void Start()
     {
         
         rb = GetComponent<Rigidbody>();
         camera1 = FindObjectOfType<Camera>();
-        grounded = true;
+        Grounded = true;
       
 
     }
@@ -37,19 +41,21 @@ public class PlayerController : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         inputVector = context.ReadValue<Vector2>();
+
         moveDr = new Vector3(inputVector.x, 0, inputVector.y);
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    public bool Jump(InputAction.CallbackContext context)
     {
 
-        if (context.performed && grounded) {
+        if (context.performed && Grounded) {
             animator.SetTrigger("Jump");
             rb.AddForce(Vector3.up * (jumpStrength*1000));
             animator.SetBool("isFalling", true);
-            grounded = false;
+            Grounded = false;
             animator.SetBool("Grounded", false);
         }
+        return Grounded;
          
     }
 
@@ -61,10 +67,15 @@ public class PlayerController : MonoBehaviour
         {
             RotateWithCamera();
             float gravity = rb.velocity.y;
-            rb.velocity = (rotDir.normalized * moveSpeed);
-            if (rb.velocity.magnitude >= moveSpeedMax)
+            float tempMultiplier = 1f;
+            if (!grounded)
             {
-                rb.velocity = rb.velocity.normalized * moveSpeedMax;
+                tempMultiplier = jumpMovementMultiplier;
+            }
+            rb.velocity = (rotDir.normalized * moveSpeed* tempMultiplier);
+            if (rb.velocity.magnitude >= moveSpeedMax * tempMultiplier)
+            {
+                rb.velocity = rb.velocity.normalized * moveSpeedMax * tempMultiplier;
             }
             rb.velocity += new Vector3(0, gravity, 0);
         }
@@ -73,8 +84,8 @@ public class PlayerController : MonoBehaviour
         animator.transform.rotation = transform.rotation;
 
         //Anson: Added to update falling animation
-        grounded = Physics.Raycast(transform.position + Vector3.up, Vector3.down, 1.6f, layerMask);
-        animator.SetBool("Grounded", grounded);
+        Grounded = Physics.Raycast(transform.position + Vector3.up, Vector3.down, 1.6f, layerMask);
+        animator.SetBool("Grounded", Grounded);
     }
 
     // dont delete this its my pride and joy :^D

@@ -96,7 +96,7 @@ public class ButtonInteractableScript : InteractableScript
     /// </summary>
     public override void activate()
     {
-        if (timer_Now < timer+0.5f)
+        if (timer_Now < timer+0.5f && timer_Now != 0)
         {
             return;
         }
@@ -114,6 +114,7 @@ public class ButtonInteractableScript : InteractableScript
         {
             currentCoroutine = StartCoroutine(autoDeactivate());
         }
+        PlaySound_use();
     }
 
     void activateBehaviour()

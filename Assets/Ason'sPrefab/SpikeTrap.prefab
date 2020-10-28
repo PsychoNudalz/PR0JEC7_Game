@@ -5734,7 +5734,7 @@ MonoBehaviour:
   launchPoint: {fileID: 0}
   launchOnCollision: 1
   launchDir: {x: 0, y: 0, z: 0}
-  launchForce: 500
+  launchForce: 750
   attackedTargets: []
   timeBetweenAttack_TimeNow: 0
   onTrigger: 0
