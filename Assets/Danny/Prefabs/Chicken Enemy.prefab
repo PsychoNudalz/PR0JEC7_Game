@@ -988,7 +988,7 @@ MonoBehaviour:
   runSpeed: 2
   waypointsToFollow: {fileID: 0}
   enemyHealthBar: {fileID: 1477317451}
-  chargePlayerDistance: 7
+  chargePlayerDistance: 5
   chickenSound: {fileID: 442438972}
   chickenRunningSound: {fileID: 1196035082}
   chickenIdleSound: {fileID: 1196035083}
@@ -1071,17 +1071,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health_Current: 0
-  health_Max: 10
+  health_Max: 20
   isDead: 0
   deathGameObject: {fileID: 7543220315117713057}
-  disableOnDeath: 1
-  destroyOnDeath: 0
+  disableOnDeath: 0
+  destroyOnDeath: 1
   delayDeath: 0
+  detatchPopUps: 1
   damagePopScript: {fileID: 4361111598534442870}
   groupParticleSystemScript: {fileID: 400586913173948367}
   healthBarController: {fileID: 0}
-  respawnPrefab: {fileID: 401312698625279493}
-  respawnDelay: 5
+  respawnDelay: 10
+  enemyType: 0
 --- !u!136 &401312698625279494
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1108,7 +1109,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 827fa144afe899848b7cb97a3dfc06be, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1204,7 +1205,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: de78bf173eb12c246b0e4bd5570c2b99, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1300,7 +1301,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7f22e608c16001b4fbbc59b24dfd7dcb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

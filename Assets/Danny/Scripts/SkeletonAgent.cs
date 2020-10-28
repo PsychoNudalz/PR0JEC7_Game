@@ -27,27 +27,43 @@ public class SkeletonAgent : MonoBehaviour
     private int currentWaypoint;
     private Camera camera;
     private AudioSource rattlingBones;
+    public Vector3 initialPosition;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        ResetSkeleton();
+        
+    }
+
+    public void ResetSkeleton()
+    {
+        initialPosition = transform.position;
+        currentAction = "Walk";
+        isMoving = true;
         animator = GetComponentInChildren<Animator>();
-        animator.SetTrigger(currentAction);
-            waypoints = new Transform[waypointsToFollow.childCount];
-            for (int i = 0; i < waypoints.Length; i++)
-            {
-                waypoints[i] = waypointsToFollow.GetChild(i);
-            }
-        target = waypoints[0];
-
-        skeletonAgent = GetComponent<NavMeshAgent>();
-        skeletonAgent.destination = target.position;
         lifeSystem = GetComponent<EnemyLifeSystemScript>();
+        skeletonAgent = GetComponent<NavMeshAgent>();
+        animator.SetTrigger(currentAction);
+        SetWaypoints();
 
-        foreach(Image child in enemyHealthBar.GetComponentsInChildren<Image>())
+        //initialPosition = transform.position;
+        //currentAction = "Walk";
+        //isMoving = true;
+        //animator = GetComponentInChildren<Animator>();
+        //animator.SetTrigger(currentAction);
+        //SetWaypoints();
+        
+        //skeletonAgent = GetComponent<NavMeshAgent>();
+
+        //skeletonAgent.destination = target.position;
+        //lifeSystem = GetComponent<EnemyLifeSystemScript>();
+
+        foreach (Image child in enemyHealthBar.GetComponentsInChildren<Image>())
         {
-            if (child.gameObject.name.Equals("EnemyHealthbarImage")){
+            if (child.gameObject.name.Equals("EnemyHealthbarImage"))
+            {
                 healthBarImage = child;
             }
         }
@@ -55,7 +71,27 @@ public class SkeletonAgent : MonoBehaviour
         SetHealthBar();
         rotateTextToCamera();
         rattlingBones = GetComponent<AudioSource>();
+        if(!rattlingBones.isPlaying)
         rattlingBones.Play();
+    }
+
+    public void SetWaypoints()
+    {
+        try
+        {
+            waypoints = new Transform[waypointsToFollow.childCount];
+            for (int i = 0; i < waypoints.Length; i++)
+            {
+                waypoints[i] = waypointsToFollow.GetChild(i);
+            }
+            target = waypoints[0];
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log("Set waypoints failed");
+        }
+        if (target != null)
+            skeletonAgent.destination = target.position;
     }
 
     void FixedUpdate() {
