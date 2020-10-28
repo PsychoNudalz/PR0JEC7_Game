@@ -58,7 +58,7 @@ public class PlayerMasterHandlerScript : MonoBehaviour
     {
         if (!playerLifeSystem.IsDead)
         {
-            if (context.performed )
+            if (context.performed)
             {
                 playerController.Move(context);
                 playerSoundScript.playSound_walking();
@@ -81,9 +81,14 @@ public class PlayerMasterHandlerScript : MonoBehaviour
         {
             if (context.performed)
             {
+                if (playerController.Grounded)
+                {
 
-            playerController.Jump(context);
-            playerSoundScript.playSound_jump();
+                    playerSoundScript.playSound_jump();
+                }
+                if (playerController.Jump(context))
+                {
+                }
             }
         }
     }
@@ -120,7 +125,7 @@ public class PlayerMasterHandlerScript : MonoBehaviour
         if (gameEndingController != null)
         {
 
-        gameEndingController.TriggerOnDeath();
+            gameEndingController.TriggerOnDeath();
         }
     }
 }

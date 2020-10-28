@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         moveDr = new Vector3(inputVector.x, 0, inputVector.y);
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    public bool Jump(InputAction.CallbackContext context)
     {
 
         if (context.performed && Grounded) {
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
             Grounded = false;
             animator.SetBool("Grounded", false);
         }
+        return Grounded;
          
     }
 

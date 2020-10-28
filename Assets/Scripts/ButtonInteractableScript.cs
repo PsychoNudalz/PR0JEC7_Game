@@ -114,6 +114,7 @@ public class ButtonInteractableScript : InteractableScript
         {
             currentCoroutine = StartCoroutine(autoDeactivate());
         }
+        PlaySound_use();
     }
 
     void activateBehaviour()
