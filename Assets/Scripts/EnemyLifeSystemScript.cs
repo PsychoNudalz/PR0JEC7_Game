@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class EnemyLifeSystemScript : LifeSystemScript
 {
-    /*
-    [SerializeField]
-    private GameObject respawnPrefab;
+    
     [SerializeField]
     private float respawnDelay = 5f;
+    [SerializeField]
+    private Enemy enemyType;
     private EnemySpawner spawner;
 
     private void Start()
@@ -24,8 +24,12 @@ public class EnemyLifeSystemScript : LifeSystemScript
             Instantiate(deathGameObject, deathGameObject.transform.position, deathGameObject.transform.rotation).SetActive(true);
         }
 
-        StartCoroutine(spawner.RespawnEnemyChicken(respawnPrefab, this.gameObject.GetComponent<ChickenAgent>().initialPosition, respawnDelay, this.gameObject.GetComponent<ChickenAgent>().waypointsToFollow));
-
+        if (enemyType.Equals(Enemy.Chicken)){
+            ChickenAgent agent = gameObject.GetComponent<ChickenAgent>();
+            spawner.SpawnEnemy(enemyType, agent.initialPosition, respawnDelay, agent.waypointsToFollow);
+        }
+        
+        
         if (disableOnDeath)
         {
             gameObject.SetActive(false);
@@ -38,5 +42,5 @@ public class EnemyLifeSystemScript : LifeSystemScript
 
     }
 
-   */
+   
 }

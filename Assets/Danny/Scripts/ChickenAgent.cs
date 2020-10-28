@@ -38,12 +38,33 @@ public class ChickenAgent : MonoBehaviour
 
     void Awake()
     {
-        
+        ResetChicken();
+    }
+
+    public void ResetChicken()
+    {
         initialPosition = transform.position;
+        currentAction = "Walk";
+        isMoving = true;
         animator = GetComponentInChildren<Animator>();
         lifeSystem = GetComponent<EnemyLifeSystemScript>();
         chickenAgent = GetComponent<NavMeshAgent>();
         animator.SetTrigger(currentAction);
+        SetWaypoints();
+
+        foreach (Image child in enemyHealthBar.GetComponentsInChildren<Image>())
+        {
+            if (child.gameObject.name.Equals("EnemyHealthbarImage"))
+            {
+                healthBarImage = child;
+            }
+        }
+        SetHealthBar();
+        if (!chickenSound.isPlaying)
+            chickenSound.Play();
+    }
+    public void SetWaypoints()
+    {
         try
         {
             waypoints = new Transform[waypointsToFollow.childCount];
@@ -51,24 +72,13 @@ public class ChickenAgent : MonoBehaviour
             {
                 waypoints[i] = waypointsToFollow.GetChild(i);
             }
-        target = waypoints[0];
-        } catch (System.Exception e)
+            target = waypoints[0];
+        }
+        catch (System.Exception e)
         {
-
+            Debug.Log("Set waypoints failed");
         }
         chickenAgent.destination = target.position;
-
-        foreach (Image child in enemyHealthBar.GetComponentsInChildren<Image>())
-        {
-            if (child.gameObject.name.Equals("EnemyHealthbarImage")){
-                healthBarImage = child;
-            }
-        }
-        
-            if (!chickenSound.isPlaying)
-                chickenSound.Play();
-       
-        
     }
 
     void FixedUpdate() {
