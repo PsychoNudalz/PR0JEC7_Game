@@ -48,18 +48,6 @@ public class SkeletonAgent : MonoBehaviour
         animator.SetTrigger(currentAction);
         SetWaypoints();
 
-        //initialPosition = transform.position;
-        //currentAction = "Walk";
-        //isMoving = true;
-        //animator = GetComponentInChildren<Animator>();
-        //animator.SetTrigger(currentAction);
-        //SetWaypoints();
-        
-        //skeletonAgent = GetComponent<NavMeshAgent>();
-
-        //skeletonAgent.destination = target.position;
-        //lifeSystem = GetComponent<EnemyLifeSystemScript>();
-
         foreach (Image child in enemyHealthBar.GetComponentsInChildren<Image>())
         {
             if (child.gameObject.name.Equals("EnemyHealthbarImage"))
@@ -103,7 +91,7 @@ public class SkeletonAgent : MonoBehaviour
         {
             //Get waypoint script containing actions and perform idleAction
             SkeletonWaypoint targetScript = target.GetComponent<SkeletonWaypoint>();
-            StartCoroutine(PerformWaypointAction(targetScript.GetIdleTime(), targetScript.GetIsRunning()));
+            StartCoroutine(PerformIdleAction(targetScript.GetIdleTime(), targetScript.GetIsRunning()));
             GetNextWaypoint();
 
         }
@@ -116,7 +104,7 @@ public class SkeletonAgent : MonoBehaviour
 
 
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
-    IEnumerator PerformWaypointAction(float waitTime, bool isRunning)
+    IEnumerator PerformIdleAction(float waitTime, bool isRunning)
     {
         if(waitTime > 0)
         {
@@ -201,5 +189,13 @@ public class SkeletonAgent : MonoBehaviour
             skeletonAgent.destination = target.position;
         }
         isMoving = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(PerformIdleAction(2f, false));
+        }
     }
 }
