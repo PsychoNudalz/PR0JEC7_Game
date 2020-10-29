@@ -17,6 +17,7 @@ public class TrapInteractableScript : InteractableScript
         {
             trapScript = GetComponent<TrapScript>();
         }
+        interactableActive = trapScript.trapActive;
     }
 
     public override void activate()
@@ -29,6 +30,19 @@ public class TrapInteractableScript : InteractableScript
     {
         base.deactivate();
         trapScript.deactiveTrap();
+    }
+
+    public override void toggleActivate()
+    {
+        base.toggleActivate();
+        if (interactableActive)
+        {
+            trapScript.activeTrap();
+        }
+        else
+        {
+            trapScript.deactiveTrap();
+        }
     }
 
 

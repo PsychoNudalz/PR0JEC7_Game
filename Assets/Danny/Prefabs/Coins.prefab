@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0410e898487c58b4e89ddcbd9f11a637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPrefab: {fileID: 2159191131947253062, guid: f46bdac968085d34cba632d0958f9d8a,
+  coinPrefab: {fileID: 2159191131947253062, guid: f46bdac968085d34cba632d0958f9d8a,
     type: 3}
-  levelSize: 40
-  numberOfCoins: 40
+  numberOfCoins: 200

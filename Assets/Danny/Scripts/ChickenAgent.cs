@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.PlayerLoop;
+using System;
 
 public class ChickenAgent : MonoBehaviour
 {
@@ -32,39 +33,52 @@ public class ChickenAgent : MonoBehaviour
     private Transform target;
     private int currentWaypoint;
     private Camera camera;
+    public Vector3 initialPosition;
 
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        ResetChicken();
+    }
+
+    public void ResetChicken()
+    {
+        initialPosition = transform.position;
+        currentAction = "Walk";
+        isMoving = true;
         animator = GetComponentInChildren<Animator>();
         lifeSystem = GetComponent<EnemyLifeSystemScript>();
         chickenAgent = GetComponent<NavMeshAgent>();
         animator.SetTrigger(currentAction);
+        SetWaypoints();
+
+        foreach (Image child in enemyHealthBar.GetComponentsInChildren<Image>())
+        {
+            if (child.gameObject.name.Equals("EnemyHealthbarImage"))
+            {
+                healthBarImage = child;
+            }
+        }
+        SetHealthBar();
+        if (!chickenSound.isPlaying)
+            chickenSound.Play();
+    }
+    public void SetWaypoints()
+    {
         try
         {
-
             waypoints = new Transform[waypointsToFollow.childCount];
             for (int i = 0; i < waypoints.Length; i++)
             {
                 waypoints[i] = waypointsToFollow.GetChild(i);
             }
-        target = waypoints[0];
-        } catch (System.Exception e)
+            target = waypoints[0];
+        }
+        catch (System.Exception e)
         {
-
+            Debug.Log("Set waypoints failed");
         }
         chickenAgent.destination = target.position;
-
-        foreach(Image child in enemyHealthBar.GetComponentsInChildren<Image>())
-        {
-            if (child.gameObject.name.Equals("EnemyHealthbarImage")){
-                healthBarImage = child;
-            }
-        }
-
-        if (!chickenSound.isPlaying)
-            chickenSound.Play();
     }
 
     void FixedUpdate() {
@@ -155,6 +169,7 @@ public class ChickenAgent : MonoBehaviour
 
     private void SetHealthBar()
     {
+        
         float fillAmount = (float) lifeSystem.Health_Current / (float) lifeSystem.Health_Max;
         healthBarImage.fillAmount = fillAmount;
     }
@@ -199,4 +214,5 @@ public class ChickenAgent : MonoBehaviour
         }
         isMoving = true;
     }
+
 }

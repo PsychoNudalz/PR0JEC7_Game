@@ -36,6 +36,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         Play(themeSong);
+        //print("Play " + themeSong.name);
     }
 
     void clearNullSounds()

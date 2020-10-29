@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42af40ba1d4b6548aaabe32b795e8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRange: {x: 1, y: 1}
+  damageRange: {x: 20, y: 30}
   timeBetweenAttack: 1
   layerMask:
     serializedVersion: 2
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapActive: 1
   trapObject: {fileID: 2346459053441346586}
-  swingSpeed: 10
-  swingMaxAngle: 90
+  swingSpeed: 5
+  swingMaxAngle: 180
   offSetAngle: 0
   offSetStartAngle: 0
   deactiveAngle: 180
