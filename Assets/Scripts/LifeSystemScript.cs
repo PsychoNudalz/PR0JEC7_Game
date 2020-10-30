@@ -71,6 +71,10 @@ public class LifeSystemScript : MonoBehaviour
         {
             health_Current += Mathf.RoundToInt(amount);
             print(name + " heal damage: " + amount);
+            if (health_Current > health_Max)
+            {
+                health_Current = health_Max;
+            }
             updateHealthBar();
         }
         return health_Current;
