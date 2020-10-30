@@ -17,13 +17,6 @@ public class GameEndingController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    public void TriggerOnDeath() {
-        endingType = FindObjectOfType<Defeated_Flag>().gameObject;
-        endingType.GetComponentInChildren<TMP_Text>().text = "Coins Collected: " + gameManager.coinsCollected;
-        endingType.SetActive(true);
-
-    }
-
     void OnTriggerEnter(Collider other) {
         if (other.gameObject == player) {
             if (gameManager.allGemsCollected()) {
@@ -31,21 +24,5 @@ public class GameEndingController : MonoBehaviour
                 endingType.SetActive(true);
             }
         }
-    }
-
-    public void NextLevelOnClick() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void RetryOnClick() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void ReturnToMainOnClick() {
-        SceneManager.LoadScene("StartMenu");
-    }
-
-    public void ExitOnClick() {
-        Application.Quit();
     }
 }

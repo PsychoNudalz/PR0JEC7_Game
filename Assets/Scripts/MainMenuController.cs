@@ -7,10 +7,16 @@ using UnityEngine;
 public class MainMenuController : MonoBehaviour {
     
     public GameObject mainCamera, mainMenu, transition;
+    public bool enteringTutorial = true;
     public void GameStartOnClick() {
         mainMenu.SetActive(false);
         mainCamera.GetComponent<Animator>().Play("EnteringGame");
         transition.GetComponent<Animator>().Play("SceneTransitionOut");
+    }
+
+    public void GameStartMainOnClick() {
+        enteringTutorial = false;
+        GameStartOnClick();
     }
 
     public void GameSettingsOnClick() {

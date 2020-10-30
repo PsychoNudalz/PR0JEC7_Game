@@ -9,7 +9,11 @@ public class AnimationController : MonoBehaviour
 {
     public GameObject settingsMenu, mainMenu;
     public void EnteringGameFinished() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (mainMenu.GetComponent<MainMenuController>().enteringTutorial) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        } else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
     }
 
     public void LookingAtSettings() {
