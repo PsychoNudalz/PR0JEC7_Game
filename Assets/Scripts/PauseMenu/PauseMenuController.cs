@@ -52,6 +52,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void ExitToMainOnClick() {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("StartMenu");
     }
 }
