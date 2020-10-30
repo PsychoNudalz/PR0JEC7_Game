@@ -631,11 +631,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995fd434e1aebc6419f8413b3bfcc245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
-  runSpeed: 3
+  walkSpeed: 1
+  runSpeed: 2
   waypointsToFollow: {fileID: 0}
   enemyHealthBar: {fileID: 652048638322976879}
   chargePlayerDistance: 5
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &600913710
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -687,15 +688,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health_Current: 0
-  health_Max: 10
+  health_Max: 30
   isDead: 0
   deathGameObject: {fileID: 5833010909817594963}
-  disableOnDeath: 1
-  destroyOnDeath: 0
+  disableOnDeath: 0
+  destroyOnDeath: 1
   delayDeath: 0
+  detatchPopUps: 1
   damagePopScript: {fileID: 4113044444630684213}
   groupParticleSystemScript: {fileID: 8607428908640908}
   healthBarController: {fileID: 0}
+  respawnDelay: 10
+  enemyType: 1
 --- !u!114 &600913709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,7 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42af40ba1d4b6548aaabe32b795e8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRange: {x: 2, y: 10}
+  damageRange: {x: 2, y: 15}
   timeBetweenAttack: 1
   layerMask:
     serializedVersion: 2

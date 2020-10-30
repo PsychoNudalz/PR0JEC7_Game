@@ -27,27 +27,31 @@ public class SkeletonAgent : MonoBehaviour
     private int currentWaypoint;
     private Camera camera;
     private AudioSource rattlingBones;
+    public Vector3 initialPosition;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        ResetSkeleton();
+        
+    }
+
+    public void ResetSkeleton()
+    {
+        initialPosition = transform.position;
+        currentAction = "Walk";
+        isMoving = true;
         animator = GetComponentInChildren<Animator>();
-        animator.SetTrigger(currentAction);
-            waypoints = new Transform[waypointsToFollow.childCount];
-            for (int i = 0; i < waypoints.Length; i++)
-            {
-                waypoints[i] = waypointsToFollow.GetChild(i);
-            }
-        target = waypoints[0];
-
-        skeletonAgent = GetComponent<NavMeshAgent>();
-        skeletonAgent.destination = target.position;
         lifeSystem = GetComponent<EnemyLifeSystemScript>();
+        skeletonAgent = GetComponent<NavMeshAgent>();
+        animator.SetTrigger(currentAction);
+        SetWaypoints();
 
-        foreach(Image child in enemyHealthBar.GetComponentsInChildren<Image>())
+        foreach (Image child in enemyHealthBar.GetComponentsInChildren<Image>())
         {
-            if (child.gameObject.name.Equals("EnemyHealthbarImage")){
+            if (child.gameObject.name.Equals("EnemyHealthbarImage"))
+            {
                 healthBarImage = child;
             }
         }
@@ -55,7 +59,27 @@ public class SkeletonAgent : MonoBehaviour
         SetHealthBar();
         rotateTextToCamera();
         rattlingBones = GetComponent<AudioSource>();
+        if(!rattlingBones.isPlaying)
         rattlingBones.Play();
+    }
+
+    public void SetWaypoints()
+    {
+        try
+        {
+            waypoints = new Transform[waypointsToFollow.childCount];
+            for (int i = 0; i < waypoints.Length; i++)
+            {
+                waypoints[i] = waypointsToFollow.GetChild(i);
+            }
+            target = waypoints[0];
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log("Set waypoints failed");
+        }
+        if (target != null)
+            skeletonAgent.destination = target.position;
     }
 
     void FixedUpdate() {
@@ -67,7 +91,7 @@ public class SkeletonAgent : MonoBehaviour
         {
             //Get waypoint script containing actions and perform idleAction
             SkeletonWaypoint targetScript = target.GetComponent<SkeletonWaypoint>();
-            StartCoroutine(PerformWaypointAction(targetScript.GetIdleTime(), targetScript.GetIsRunning()));
+            StartCoroutine(PerformIdleAction(targetScript.GetIdleTime(), targetScript.GetIsRunning()));
             GetNextWaypoint();
 
         }
@@ -80,7 +104,7 @@ public class SkeletonAgent : MonoBehaviour
 
 
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
-    IEnumerator PerformWaypointAction(float waitTime, bool isRunning)
+    IEnumerator PerformIdleAction(float waitTime, bool isRunning)
     {
         if(waitTime > 0)
         {
@@ -165,5 +189,13 @@ public class SkeletonAgent : MonoBehaviour
             skeletonAgent.destination = target.position;
         }
         isMoving = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(PerformIdleAction(2f, false));
+        }
     }
 }

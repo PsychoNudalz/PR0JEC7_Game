@@ -76,8 +76,9 @@ public class ChickenAgent : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.Log("Set waypoints failed");
+            
         }
+        if(target != null)
         chickenAgent.destination = target.position;
     }
 
@@ -86,11 +87,11 @@ public class ChickenAgent : MonoBehaviour
         SetHealthBar();
         rotateTextToCamera();
         //if next point reached
-        if (Vector3.Distance(transform.position, target.position) <= 0.5f)
+        if (Vector3.Distance(transform.position, target.position) <= 1f)
         {
             //Get waypoint script containing actions and perform idleAction
             ChickenWaypoint targetScript = target.GetComponent<ChickenWaypoint>();
-            StartCoroutine(PerformWaypointAction(targetScript.GetIdleAction(), targetScript.GetIdleTime(), targetScript.GetIsRunning()));
+            StartCoroutine(PerformIdleAction(targetScript.GetIdleAction(), targetScript.GetIdleTime(), targetScript.GetIsRunning()));
             GetNextWaypoint();
 
         }
@@ -103,7 +104,7 @@ public class ChickenAgent : MonoBehaviour
 
 
     //Perform Idle animation for so many seconds before continuing to next waypoint at set speed
-    IEnumerator PerformWaypointAction(IdleAction idleAction, float waitTime, bool isRunning)
+    IEnumerator PerformIdleAction(IdleAction idleAction, float waitTime, bool isRunning)
     {
         if(waitTime > 0)
         {
@@ -215,4 +216,11 @@ public class ChickenAgent : MonoBehaviour
         isMoving = true;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(PerformIdleAction(IdleAction.Idle, 2f, false));
+        }
+    }
 }

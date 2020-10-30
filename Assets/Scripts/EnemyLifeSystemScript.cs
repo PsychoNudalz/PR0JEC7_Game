@@ -7,7 +7,7 @@ public class EnemyLifeSystemScript : LifeSystemScript
 {
     
     [SerializeField]
-    private float respawnDelay = 5f;
+    private float respawnDelay = 10f;
     [SerializeField]
     private Enemy enemyType;
     private EnemySpawner spawner;
@@ -28,7 +28,11 @@ public class EnemyLifeSystemScript : LifeSystemScript
             ChickenAgent agent = gameObject.GetComponent<ChickenAgent>();
             spawner.SpawnEnemy(enemyType, agent.initialPosition, respawnDelay, agent.waypointsToFollow);
         }
-        
+        else if (enemyType.Equals(Enemy.Skeleton))
+        {
+            SkeletonAgent agent = gameObject.GetComponent<SkeletonAgent>();
+            spawner.SpawnEnemy(enemyType, agent.initialPosition, respawnDelay, agent.waypointsToFollow);
+        }
         
         if (disableOnDeath)
         {
