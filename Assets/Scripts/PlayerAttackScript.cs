@@ -9,7 +9,7 @@ public class PlayerAttackScript : MonoBehaviour
 
     [Header("Debug Componenets")]
     [SerializeField] Transform box;
-    [SerializeField] Camera camera;
+    public Camera camera;
     [SerializeField] Vector3 offset;
 
     private void Awake()
@@ -21,6 +21,7 @@ public class PlayerAttackScript : MonoBehaviour
         box = (damageScript as BoxCastDamageScript).box;
         camera = FindObjectOfType<Camera>();
         offset = box.position - transform.position;
+        offset = Quaternion.AngleAxis(-transform.eulerAngles.y, Vector3.up) * offset;
     }
 
     private void Update()
