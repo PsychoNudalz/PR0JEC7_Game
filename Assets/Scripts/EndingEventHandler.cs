@@ -20,6 +20,15 @@ public class EndingEventHandler : MonoBehaviour
         Cursor.visible = true;
         defeatedScreen.SetActive(true);
     }
+    public void TriggerOnDeathDelay(float v = 1f)
+    {
+        StartCoroutine(TriggerOnDeath(v));
+    }
+     public IEnumerator TriggerOnDeath(float v = 1f)
+    {
+        yield return new WaitForSeconds(v);
+        TriggerOnDeath();
+    }
 
     public void RetryOnClick() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -120,12 +120,11 @@ public class PlayerMasterHandlerScript : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public void GameOver(float v = 1f)
     {
         if (endingEventHandler != null)
         {
-
-            endingEventHandler.TriggerOnDeath();
+            endingEventHandler.TriggerOnDeathDelay(v);
         }
     }
 }
