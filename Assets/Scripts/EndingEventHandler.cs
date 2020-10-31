@@ -17,6 +17,7 @@ public class EndingEventHandler : MonoBehaviour
     public void TriggerOnDeath() {
         defeatedScreen = this.gameObject.transform.GetChild(2).gameObject;
         defeatedScreen.GetComponentInChildren<TMP_Text>().text = "Coins Collected: " + gameManager.coinsCollected;
+        Cursor.visible = true;
         defeatedScreen.SetActive(true);
     }
 

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
         //coinCounterText.text = "0";
         coloursCollected = new List<GemColour>();
         icons = gemIconPanel.GetComponentsInChildren<Image>();
+        Cursor.visible = false;
     }
 
     public void CollectGem(GemColour colour)
