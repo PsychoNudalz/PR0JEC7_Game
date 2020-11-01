@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager instance;
     public Sound themeSong;
+    public AudioMixerGroup mixerGroup;
 
     public List<Sound> sounds;
 
@@ -78,6 +79,7 @@ public class SoundManager : MonoBehaviour
                 s.source.reverbZoneMix = s.reverbZoneMix;
                 s.source.minDistance = s.minDistance;
                 s.source.maxDistance = s.maxDistance;
+                s.source.outputAudioMixerGroup = mixerGroup;
             }
 
 
@@ -186,6 +188,8 @@ public class SoundManager : MonoBehaviour
             s.source.reverbZoneMix = s.reverbZoneMix;
             s.source.minDistance = s.minDistance;
             s.source.maxDistance = s.maxDistance;
+            s.source.outputAudioMixerGroup = mixerGroup;
+
             s.source.Play();
         }
     }
