@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         coloursCollected = new List<GemColour>();
         icons = gemIconPanel.GetComponentsInChildren<Image>();
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void CollectGem(GemColour colour)
