@@ -7,10 +7,10 @@ public enum GemColour { Green, Red, Blue, Purple, Yellow };
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
+    //[SerializeField]
     private GameObject gemIconPanel;
     
-    [SerializeField]
+    //[SerializeField]
     private Text coinCounterText;
 
     public int coinsCollected;
@@ -20,12 +20,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gemIconPanel = FindObjectOfType<FindGemIcons>().gameObject;
+        coinCounterText = FindObjectOfType<FindCoinCounter>().GetComponent<Text>();
         coinsCollected = 0;
         //coinCounterText.text = "0";
         coloursCollected = new List<GemColour>();
         icons = gemIconPanel.GetComponentsInChildren<Image>();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     public void CollectGem(GemColour colour)

@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 6939679895846169718}
   - component: {fileID: 7085859566977186120}
   - component: {fileID: 4913936394176789745}
+  - component: {fileID: 2496361406300116563}
   m_Layer: 5
   m_Name: CoinCounter
   m_TagString: Untagged
@@ -264,3 +265,15 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 99
+--- !u!114 &2496361406300116563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975393847734820164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c975c6c681156ed40941fe7e0793dcea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
