@@ -580,11 +580,11 @@ Light:
   m_GameObject: {fileID: 6990035644129663874}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9411765, g: 0.627451, b: 0.3137255, a: 1}
-  m_Intensity: 30
-  m_Range: 8
+  m_Intensity: 10
+  m_Range: 10
   m_SpotAngle: 160
   m_InnerSpotAngle: 100
   m_CookieSize: 10

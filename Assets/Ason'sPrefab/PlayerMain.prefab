@@ -5046,7 +5046,7 @@ MonoBehaviour:
   soundManager: {fileID: 0}
   playerSoundScript: {fileID: 981581816}
   healthBarController: {fileID: 0}
-  gameEndingController: {fileID: 0}
+  endingEventHandler: {fileID: 0}
 --- !u!114 &436441826727860308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5197,7 +5197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d621313508b551246aa237e6cc78f9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRange: {x: 5, y: 10}
+  damageRange: {x: 10, y: 15}
   timeBetweenAttack: 0.7
   layerMask:
     serializedVersion: 2
@@ -5261,7 +5261,7 @@ MonoBehaviour:
   moveSpeedMax: 5
   turnSmoothTime: 0.12
   grounded: 0
-  jumpStrength: 30
+  jumpStrength: 40
   jumpMovementMultiplier: 1
   layerMask:
     serializedVersion: 2
@@ -13228,6 +13228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GraveStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991502834656149384, guid: 4cd9e0faadc7b224e87fef69047cf5b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd9e0faadc7b224e87fef69047cf5b3, type: 3}

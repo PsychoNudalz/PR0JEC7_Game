@@ -189,4 +189,9 @@ public class SoundManager : MonoBehaviour
             s.source.Play();
         }
     }
+
+    private void OnEnable()
+    {
+        updateSounds();
+    }
 }

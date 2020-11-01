@@ -28,7 +28,6 @@ public class PlayerLifeSystemScript : LifeSystemScript
     public override void DeathBehaviour()
     {
         base.DeathBehaviour();
-        playerMasterHandlerScript.GameOver();
     }
 
     public override int takeDamage(float dmg)
@@ -49,10 +48,12 @@ public class PlayerLifeSystemScript : LifeSystemScript
     {
         playerSoundScript.playSound_death();
         animator.SetBool(deathTriggerName, IsDead);
-        print(animator.GetBool(deathTriggerName));
+        playerMasterHandlerScript.GameOver(delayDeath+1);
         yield return new WaitForSeconds(delayDeath);
         DeathBehaviour();
     }
+
+
 
 
 }

@@ -21,10 +21,14 @@ public class PauseMenuController : MonoBehaviour
 
     void TogglePauseMenu() {
         if (m_paused) {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1.0f;
             AudioListener.pause = false;
             pauseMenu.SetActive(false);
         } else {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             Time.timeScale = 0.0f;
             AudioListener.pause = true;
             pauseMenu.SetActive(true);
@@ -50,7 +54,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void ExitToMainOnClick() {
-        Debug.Log("Quitted");
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("StartMenu");
     }
 }
