@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   themeSong: {fileID: 8671155537118130032}
+  mixerGroup: {fileID: 24300002, guid: bdeedfe2be89d6544bef8b9080801231, type: 2}
   sounds: []
 --- !u!1 &8671155537118130033
 GameObject:
