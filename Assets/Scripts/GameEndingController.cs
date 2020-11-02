@@ -21,6 +21,8 @@ public class GameEndingController : MonoBehaviour
         if (other.gameObject == player) {
             if (gameManager.allGemsCollected()) {
                 endingType.GetComponentInChildren<TMP_Text>().text = "Coins Collected: " + gameManager.coinsCollected;
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
                 endingType.SetActive(true);
             }
         }
