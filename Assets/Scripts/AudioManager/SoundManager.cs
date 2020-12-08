@@ -4,7 +4,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-
+/// <summary>
+/// Anson:
+/// handles sounds in the scene, playing and stopping them
+/// </summary>
 public class SoundManager : MonoBehaviour
 {
 

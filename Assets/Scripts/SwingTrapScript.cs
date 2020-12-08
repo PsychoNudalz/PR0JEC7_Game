@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// Anson:
 /// Extends Trap Script
 /// swings the trap from left to right according to the max angle
 /// swing speed follows a sin wave

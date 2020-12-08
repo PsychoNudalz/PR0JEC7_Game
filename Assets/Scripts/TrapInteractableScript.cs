@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// Anson:
 /// Extends Interactable Script
 /// links the trap script with the interactable script
 /// allows other scripts like Button Interactable to control the trap

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// Anson:
 /// Extend Trap Script
 /// for having a spinning trap
 /// spins the object in 360 dgrees at a constant speed

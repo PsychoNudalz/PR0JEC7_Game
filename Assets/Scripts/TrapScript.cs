@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 /// <summary>
+/// Anson:
 /// super class for handling all traps
 /// </summary>
 public abstract class TrapScript : MonoBehaviour

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
+/// Anson:
 /// Extends damage script
 /// deal damage in an area specify by the dimension and position of the Box game object
 /// </summary>

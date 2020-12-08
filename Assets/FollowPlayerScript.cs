@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Anson:
+/// follows the player
+/// for camera to focus on this object
+/// </summary>
 public class FollowPlayerScript : MonoBehaviour
 {
     public Transform player;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// Anson:
 /// Extends Damage Script
 /// Deals damage on collisionm or on trigger
 /// requires collider

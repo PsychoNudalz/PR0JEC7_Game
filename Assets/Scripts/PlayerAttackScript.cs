@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Anson:
+/// for player attacking, dealing damage, animating the sword and rotation the attack area to where the camera is looking at
+/// </summary>
 public class PlayerAttackScript : MonoBehaviour
 {
     public DamageScript damageScript;

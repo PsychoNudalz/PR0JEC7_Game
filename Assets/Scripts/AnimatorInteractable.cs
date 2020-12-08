@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 /// <summary>
+/// Anson:
 /// Extends Interactable Script
 /// Intereactive Object to activate an animator's animation
 /// good for doors or bridges

@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 /// <summary>
+/// Anson:
 /// super class for handling dealing damage to life system
 /// </summary>
 public class DamageScript : MonoBehaviour
@@ -82,7 +83,10 @@ public class DamageScript : MonoBehaviour
             attackedTargets.Add(ls);
         }
     }
-
+    /// <summary>
+    /// apply force to the collided object to set it flying
+    /// </summary>
+    /// <param name="collision">collided object</param>
     protected void applyLaunch(GameObject collision)
     {
         if (launchOnCollision)

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Anson:
+/// script to play a group of particle system at once
+/// </summary>
 public class GroupParticleSystemScript : MonoBehaviour
 {
-    /// <summary>
-    /// script to play a group of particle system at once
-    /// </summary>
+
     [SerializeField] List<ParticleSystem> particleSystems = new List<ParticleSystem>();
 
 
@@ -25,8 +27,8 @@ public class GroupParticleSystemScript : MonoBehaviour
     /// </summary>
     public void Play()
     {
-        
-        foreach(ParticleSystem p in particleSystems)
+
+        foreach (ParticleSystem p in particleSystems)
         {
             p.Stop();
             p.Play();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// Anson:
 /// base Life system super class, handles heealth, taking damage, healing
 /// </summary>
 
@@ -140,7 +141,7 @@ public class LifeSystemScript : MonoBehaviour
         {
             if (detatchPopUps)
             {
-                StartCoroutine(reatach());
+                StartCoroutine(reattach());
             }
             gameObject.SetActive(false);
         }
@@ -162,7 +163,7 @@ public class LifeSystemScript : MonoBehaviour
         DeathBehaviour();
     }
 
-    public virtual IEnumerator reatach()
+    public virtual IEnumerator reattach()
     {
         damagePopScript.transform.SetParent(null);
         groupParticleSystemScript.transform.SetParent(null);

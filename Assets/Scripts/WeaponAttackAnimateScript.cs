@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// for animating the sword swinging
+/// Anson:
+/// animates sword swing from left to right and right to left at a random angle
+/// it works.... kinda
 /// </summary>
 public class WeaponAttackAnimateScript : MonoBehaviour
 {
